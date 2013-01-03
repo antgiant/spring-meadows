@@ -1,0 +1,83 @@
+.video {
+  //This class triggers the Responsive Video Resizing Javascript
+    display: block;
+    float: left;
+    width: 99%;
+}
+.small {
+    font-size: 0.9em;
+}
+.smaller {
+    font-size: 0.8em;
+}
+.smallest {
+    font-size: 0.7em;
+}
+.large {
+    font-size: 1.1em;
+}
+.larger {
+    font-size: 1.2em;
+}
+.largest {
+    font-size: 1.3em;
+}
+.imageAndCaption {
+    display: block;
+    float: left;
+}
+.image_CaptionRight {
+  display: block;
+  float: right;
+  text-align: right;
+}
+.column1of2 {
+    display: block;
+    float: left;
+    width: 30%;
+    padding: 0 1.5%;
+}
+  hr {
+    border: 1px solid #EEE;
+    width: 100%;
+  }
+  h1 {
+    font-size: 2em;
+    text-align: center;
+    font-style: italic;
+    color: #705F55;
+    line-height: 1em;
+  }
+  h2 {
+    text-align: left;
+    color: #705F55;
+    font-style: italic;
+    font-size: 1.44em;
+  }
+  h3 {
+    color: #736D6E;
+    background-color: #E4C18B;
+    font-weight: normal;
+    font-size: 1.28em;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+  }
+//.imageCaption1of3 {
+//    display: block;
+//    float: left;
+//    width: 20%;
+//    padding: 0 1.5%;
+//}
+
+  @media (max-width: 600px) {
+   //When screen shrinks convert multiple columns to single column
+      .column1of2 {
+          width: 98%;
+      }
+      .imageCaption1of3 {
+          width: 98%;
+      }
+  }

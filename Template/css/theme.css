@@ -1,0 +1,617 @@
+/* CSS Document */
+  body {
+    margin: 0 0 0 0;
+    font-size:100%;
+    line-height:1.125em; /* 16*1.125=18 */
+    font-family: Georgia, Times, "Times New Roman", serif;
+    color: #9E7473;
+  }
+  a img {
+    border: 0;
+  }
+  img {
+    max-width: 100%;
+  }
+  table {
+    width: 100%;
+  }
+  .sanserif {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+  #siteIdentifier {
+    width: 100%;
+  }
+  .cke_font,.cke_fontSize {
+    display: none;
+  }
+  .titleBarName {
+    color: #847467;
+    font-size:1.28em; /*12 pt */
+    line-height: 2em;
+  }
+  .italics {
+    font-style: italic;
+  }
+  .center {
+    text-align: center;
+  }
+  .centerWrapper {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @media (max-width: 920px) {
+    .centerWrapper {
+      width: 98%;
+      padding: 0 1%;
+    }
+  }
+  #topLinks {
+    font-size: 1.28em;
+    text-align: right;
+  }
+  #topLinks a,a.subpages .subpages-title{
+    padding: 0 0.3em;
+    color: #919C39
+    //color: #666666;
+    text-decoration: none;
+  }
+  p a.subpages .subpages-title{
+    padding: 0.5em 0;
+    float: left;
+    width: 100%;
+  }
+  #topLinks a:hover {
+    -webkit-border-radius: .2em;
+    -moz-border-radius: .2em;
+    border-radius: .2em;
+    behavior: url(/site/1/template/css/ie-css3.htc); /* This lets old versions of IE work with rounded corners and box shadows */
+    background: #EEE;
+  }
+  form p input {
+    vertical-align: middle !important;
+  }
+  .fullBoxShadow {
+    -moz-box-shadow:  0 0 10px 4px #aaa; /* Firefox */
+    -webkit-box-shadow: 0 0 10px 4px #aaa;
+    box-shadow: 0 0 10px 4px #aaa;
+    behavior: url(/site/1/template/css/ie-css3.htc); /* This lets old versions of IE work with rounded corners and box shadows */
+  }
+  .lightfullBoxShadow {
+    -moz-box-shadow:  0 0 10px 4px #EEE; /* Firefox */
+    -webkit-box-shadow: 0 0 10px 4px #EEE;
+    box-shadow: 0 0 10px 4px #EEE;
+    behavior: url(/site/1/template/css/ie-css3.htc); /* This lets old versions of IE work with rounded corners and box shadows */
+  }
+  #pageArea {
+    overflow: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .headerWrapper{
+    margin: 3% auto;
+    padding: 1%;
+    width: 90%;
+  }
+  #headerArea {
+    background-image: url(/site/1/template/images/bg329.jpg);
+    overflow: hidden;
+    -webkit-border-radius: .2em;
+    -moz-border-radius: .2em;
+    border-radius: .2em;
+    behavior: url(/site/1/template/css/ie-css3.htc); /* This lets old versions of IE work with rounded corners and box shadows */
+    text-align: center;
+  }
+  #headerArea h3{
+    text-align: center;
+  }
+  #headerArea iframe {
+    height: 520px;
+    max-width: 640px;
+    width: 100%;
+    border: 0;
+  }
+  ul.MenuBarHorizontal {
+    background-image: url(/site/1/template/images/menu-line.png);
+    font-size: 1.28em;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  .MenuBarHorizontal li {
+    width: 110px;
+    height: 58px;
+    display: inline-block;
+    margin: 0 -3px;
+  }
+  .MenuBarHorizontal a {
+    color: #666666;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 15% 0;
+    background: url(/site/1/template/images/menu-item-last.png);
+  }
+//  .MenuBarHorizontal .last a {
+//    background: url(/site/1/template/images/menu-item-last.png);
+//  }
+  .MenuBarHorizontal a:hover {
+    color: #1A9AA9;
+    margin: 0px;
+//    border-top: 1px solid #65DAE7;
+    background: url(/site/1/template/images/menu-item-last-selected.png);
+//    -webkit-border-radius: .2em;
+//    -moz-border-radius: .2em;
+//    border-radius: .2em;
+//    behavior: url(/site/1/template/css/ie-css3.htc); /* This lets old versions of IE work with rounded corners and box shadows */
+//   /* Fallback for web browsers that doesn't support RGBa */
+//    background: rgb(26, 154, 169) transparent;
+//    /* RGBa with 0.15 opacity */
+//    background: rgba(26, 154, 169, 0.15);
+//    /* For IE 5.5 - 7*/
+//    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#261A9AA9, endColorstr=#261A9AA9);
+//    /* For IE 8*/
+//    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#261A9AA9, endColorstr=#261A9AA9)";
+  }
+//  .MenuBarHorizontal .last a:hover {
+//    background: url(/site/1/template/images/menu-item-last-selected.png);
+//  }
+  .topMenu {
+    margin: 0 auto 1%;
+    overflow: hidden;
+  }
+  .articleTop {
+    margin-top: 40px;
+  }
+  img.articleTop {
+    margin-top: 0;
+  }
+  @media (max-width: 1325px) {
+    .articleTop {
+      margin-top: 13px;
+    }
+  }
+  @media (max-width: 920px) {
+    .articleTop {
+      margin-top: 0;
+    }
+    img.articleTop {
+      float: none;
+    }
+  }
+  #superGraphic {
+    position: relative;
+    float: left;
+    padding: 2.5em 0 0 0;
+    width: 98%;
+    height: 22em;
+  }
+  .superElement {
+    position: absolute;
+    width:100%;
+    display: none;
+  }
+  .superElement.first {
+    display:block;
+  }
+  .superImage {
+    float:left;
+    width:46%;
+    margin-left: 5%;
+    margin-top:2%;
+  }
+  .superImage img {
+    border: .5em solid #FFF;
+    margin: 0 auto;
+    display: block;
+    -webkit-transform: rotate(15deg);
+    -moz-transform:rotate(15deg);
+    -o-transform:rotate(15deg);
+    -ms-transform:rotate(15deg);
+    transform:rotate(15deg);
+  }
+  .superText {
+    font-size: 2.5em;
+    font-style: italic;
+    float: right;
+    text-align: center;
+//    color: #9E8D7D;
+    color: #000;
+    position: relative;
+    line-height:1em;
+    width: 45%;
+    margin: 0;
+    margin-top: 10%;
+  }
+  #titleArea {
+    float: left;
+    width: 100%;
+    line-height: 2em;
+  }
+  #titleWrapper {
+    margin-top: 1em;
+    clear: both;
+  }
+  .frontButtons ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .frontButtons li {
+    text-align: center;
+    float: left;
+    width: 33.333333333333333333333333333333333333%;
+    margin: auto;
+    min-width: 100px;
+  }
+  #titleImage {
+    margin-top: 2%;
+  }
+  #specialAnnounce {
+    width: 90%; 
+    margin: 0 auto; 
+    background: #F5DEBB;
+    text-align: center;
+  }
+  #crossBeam {
+    border-top: 2px solid #000; 
+    float:left; 
+    width: 30%;  
+    margin-left: -16.15%;
+    overflow-x: visible;
+    position: absolute;
+    margin-top: -.5em;
+    height: 0;
+  }
+  .navTitle {
+    color: #FFF;
+  }
+  div span.headline {
+    display: none;
+  }
+  @media (max-width: 600px) {
+    #superGraphic {
+      height: 34em;
+      width: 98%;
+      padding: 0;
+    }
+    .superText {
+      font-size: 2.5em;
+      margin: 0;
+      width: 100%;
+      position: absolute;
+      padding: 0;
+      top: 10.5em;
+    }
+    .superText br {
+      display: none;
+    }
+    .superImage {
+      width: 85%;
+      position: absolute;
+      top: 4em;
+    }
+    #titleArea {
+      line-height: 1em;
+    }
+    .frontButtons li {
+      width: 98%;
+    }
+    .frontButtons li a {
+      display: block;
+      text-align: center;
+    }
+
+    #crossBeam {
+      border-color: #FFF; 
+    }
+    .navTitle {
+      color: #705F55;
+    }
+  }
+  @media (min-width: 1250px) {
+    #superGraphic {
+      width: 64%;
+    }
+    #titleImage {
+      float: left;
+      max-width: 36%;
+      margin-top: 8%;
+    }
+  }
+  #titleArea p {
+    margin: 0.1em 0;
+  }
+  #titleArea .reduced{
+    font-size:1.28em; /*14 pt*/
+  }
+  .noTopMargin {
+    margin-top: 0;
+  }
+  #contentArea {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+  }
+  #contentArea a {
+    color: #919C39;
+    text-decoration: none;
+  }
+  #contentArea .third {
+    border-right: 2px solid #000;
+    margin-right: -2px;
+  }
+  #contentArea .sixty {
+    border-left: 2px solid #000;
+  }
+  .sidenote {
+    font-size:1.20em; /*12 pt */
+  }
+  a.control_audio {
+    display: block;
+  }
+  li a.control_audio {
+    display: inline;
+  }
+  li a.control_audio img {
+    height: 1em;
+  }
+  #footerArea{
+    float:left;
+    width: 100%;
+  }
+  .floatLeft {
+    float: left;
+  }
+  .floatRight {
+    float: right;
+  }
+  .reduced {
+    font-size:1.28em; /*14 pt*/
+  }
+  .fancyBox img {
+    vertical-align: middle;
+    border-width: 0;
+  }
+  #directions form{
+    position: relative;
+ //   border: 3px solid #9F8C7E;
+ //   -webkit-border-radius: .5em;
+ //   -moz-border-radius: .5em;
+ //   border-radius: .5em;
+ //   behavior: url(/site/1/template/css/ie-css3.htc); /* This lets old versions of IE work with rounded corners and box shadows */
+ //   background: #9F8C7E;
+    line-height: 0em;
+ //   color: #FFF;
+    text-decoration: none;
+    padding: .2em;
+  }
+  #directions a {
+ //   display: block;
+ //   line-height: 2.1em;
+    text-decoration: none;
+    color: #736d6e;
+ //   color: #FFF;
+  }
+  #directions form {
+    line-height: 1em;
+    font-style: italic;
+  }
+  .directionsSubmit {
+    background-color: #C3AD7B;
+    color: #705F55;
+    font-weight: bold;
+    font-style: normal;
+  }
+  .contentWrapper .featureImage {
+    background-color: #E4E2D5;
+    border: 2px solid #E4E2D5;
+    -webkit-border-radius: .2em;
+    -moz-border-radius: .2em;
+    border-radius: .2em;
+    behavior: url(/site/1/template/css/ie-css3.htc); /* This lets old versions of IE work with rounded corners and box shadows */
+    font-size: 0.8em;
+    margin: 2em;
+    line-height: 1.5em;
+    text-align: center;
+    font-style: italic;
+  }
+  .contentWrapper {
+    overflow-x: auto;
+  }
+  .contentWrapper .third {
+    float: left;
+    width: 30%;
+    padding: 0 1.5%;
+  }
+  .contentWrapper .forty {
+    float: left;
+    width: 36%;
+    padding: 0 1.5%;
+    line-height: 1em;
+  }
+  .contentWrapper .twenty {
+    float: left;
+    width: 16%;
+    padding: 0 1.5%;
+    line-height: 1em;
+  }
+  .contentWrapper .eighty {
+    float: left;
+    width: 76%;
+    padding: 0 1.5%;
+    line-height: 1em;
+  }
+  .contentWrapper .sixty {
+    float: left;
+    width: 55%;
+    padding: 0 1.5%;
+  }
+  .contentWrapper .fifty {
+    float: left;
+    width: 47%;
+    padding: 0 1.5%;
+  }
+  .subpages-intro {
+    float: left;
+    width: 100%;
+  }
+  .person {
+    float: left;
+    font-size: 1em;
+    line-height: 1.5em;
+    text-align: center;
+    font-style: italic;
+    margin: 0.5em;
+  }
+  .person img {
+    float: left;
+    background-color: #FFF;
+    border: 2px solid #FFF;
+    -webkit-border-radius: .2em;
+    -moz-border-radius: .2em;
+    border-radius: .2em;
+    behavior: url(/site/1/template/css/ie-css3.htc); /* This lets old versions of IE work with rounded corners and box shadows */
+  }
+  .event .date{
+    float: left;
+    background-color: #454545;
+    border: 2px solid #454545;
+    -webkit-border-radius: .2em;
+    -moz-border-radius: .2em;
+    border-radius: .2em;
+    behavior: url(/site/1/template/css/ie-css3.htc); /* This lets old versions of IE work with rounded corners and box shadows */
+    color: #EAEBE5;
+    padding: 0.4em;
+    margin: 0.2em;
+  }
+  .event {
+    font-size: 0.96em;
+    border-bottom: 1px solid #EEE;
+  }
+  .event .date {
+    line-height: 1em;
+  }
+  .event .date .day{
+    font-size: 2.1333333333333333em;
+  }
+  .event .title {
+    font-weight: bold;
+  }
+  .field_title_cell {
+    text-align: right;
+  }
+  .footerWrapper {
+    border-top: 2px solid #eee;
+    padding-top: 2%;
+  }
+  .footerWrapper .left {
+    float: left;
+    width: 46%;
+    font-size: 1.28em;
+    line-height: 1em;
+  }
+  .footerWrapper .right {
+    float: right;
+    width: 46%
+  }
+  @media (max-width: 600px) {
+    #contentArea .third {
+      border-right: 0;
+      margin-right: 0px;
+      border-bottom: 1px solid #CCC;
+      padding-bottom: 1em;
+    }
+    #contentArea .sixty {
+      border-left: 0;
+    }
+    .contentWrapper img {
+      max-width: 98%;
+    }
+    .contentWrapper .third {
+      width: 98%;
+    }
+    .footerWrapper .left {
+      width: 98%;
+    }
+    .footerWrapper .right {
+      width: 98%;
+    }
+    .contentWrapper .twenty {
+      width: 98%;
+    }
+    .contentWrapper .forty {
+      width: 98%;
+    }
+    .contentWrapper .fifty {
+      width: 98%;
+    }
+    .contentWrapper .sixty {
+      width: 98%;
+    }
+    .contentWrapper .eighty {
+      width: 98%;
+    }
+  }
+  .footerWrapper .right label {
+    font-style: italic;
+  }
+  .footerWrapper .right input {
+    width: 98%;
+    font-size: 1em;
+    background-color: #BEBEBE;
+    border: 3px solid #DEDFCF;
+  }
+  .footerWrapper .right .submit {
+    font-size: 1.28em;
+    font-style: italic;
+    width: initial;
+  }
+  #socialIcons {
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+  #socialIcons img {
+    border-width: 0;
+  }
+  .footer,.bottom_links {
+    font-size: 1em;
+    color: #705F55;
+  }
+  .requiredFooter {
+    font-size: 0.96em;
+  }
+  #pageBottom {
+    float: left;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: right;
+    font-size: 1.28em;
+    line-height: 2em;
+  }
+  .event_description,.event_link img,.FeedLink img,.calendar_event .MsoNormal {
+    display: none;
+  }
+  .third_thumbnail {
+    width: 60px;
+  }
+  .tighter_text {
+    margin: 0.25em 0;
+  }
+  .blog_text {
+    margin: 0;
+  }
+  .blog_post {
+    margin: 0.5em 0;
+  }
+  #calendarlisttoken_wrapper div.calendar_event .event_date, #calendarlisttoken_wrapper div.calendar_event .event_title {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  @media print {
+    #titleWrapper,.topMenu,#superGraphic {
+      display: none;
+    }
+  }

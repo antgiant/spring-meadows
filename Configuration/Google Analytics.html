@@ -1,0 +1,80 @@
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['b._setAccount', 'UA-1086526-2'], ['b._trackPageview']);
+_gaq.push(['b._setDomainName', 'springmeadows.org']);
+_gaq.push(['b._setAllowLinker', true]);
+_gaq.push(['b._trackPageview']);
+      var tmp = document.getElementsByTagName('a');
+      for(i = 0; i < tmp.length; i++){
+        if (tmp[i].href.indexOf(location.host.replace(/^www\./i, '')) == -1 && tmp[i].href.match(/^(https|http):\/\//i) &&
+            tmp[i].href.toLowerCase().indexOf('wintersprings22.adventistchurchconnect.org') == -1){
+          if (tmp[i].href.toLowerCase().indexOf('www.adventistgiving.org/?OrgID=ANTBR1') > -1) {
+           tmp[i].onclick =
+             function() {
+              _gaq.push([
+                  'b._trackEvent',
+                  'outgoing_links',
+                  this.href.replace(/^(https|http):\/\//i, ''),
+                  'Tithe'
+              ]);
+            }
+          }
+          else if (tmp[i].href.toLowerCase().indexOf('maps.google.com/maps?saddr=&daddr=5783+N+Ronald+Reagan+Blvd.+Sanford%2C+FL+32773') > -1 ||
+                   tmp[i].href.toLowerCase().indexOf('maps.apple.com/maps?daddr=5783+N+Ronald+Reagan+Blvd.+Sanford%2C+FL+32773') > -1) {
+           tmp[i].onclick =
+             function() {
+              _gaq.push([
+                  'b._trackEvent',
+                  'outgoing_links',
+                  this.href.replace(/^(https|http):\/\//i, ''),
+                  'Directions'
+              ]);
+            }
+          }
+          else {
+           tmp[i].onclick =
+             function() {
+              _gaq.push([
+                  'b._trackEvent',
+                  'outgoing_links',
+                  this.href.replace(/^(https|http):\/\//i, '')
+              ]);
+            }
+          }
+        }
+        else if (tmp[i].href.replace(/[?#].*/,'').split('.').pop().match(/(zip|exe|pdf|doc*|xls*|ppt*|mp3|jpg|png)$/i)) {
+          if (tmp[i].href.toLowerCase().indexOf('site/1/podcast/') > -1) {
+           tmp[i].onclick =
+             function() {
+              _gaq.push([
+                  'b._trackEvent',
+                  'download',
+                  this.href.replace(/^(https|http):\/\//i, '').replace((location.host|location.host.replace(/^www\./i, ''))),
+                  'Sermon/Podcast'
+              ]);
+            }
+          }
+          else if (tmp[i].href.toLowerCase().indexOf('site/1/docs/bulletin') > -1) {
+           tmp[i].onclick =
+             function() {
+              _gaq.push([
+                  'b._trackEvent',
+                  'download',
+                  this.href.replace(/^(https|http):\/\//i, '').replace((location.host|location.host.replace(/^www\./i, ''))),
+                  'Bulletin'
+              ]);
+            }
+          }
+          else {
+           tmp[i].onclick =
+             function() {
+              _gaq.push([
+                  'b._trackEvent',
+                  'download',
+                  this.href.replace(/^(https|http):\/\//i, '').replace((location.host|location.host.replace(/^www\./i, '')))
+            ]);
+          }
+        }
+      }
+    }
+</script>
