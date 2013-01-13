@@ -61,6 +61,21 @@ else {
         date_default_timezone_set("America/New_York");
         if((Date("NHi") >= 61030 && Date("NHi") <= 61300 && !array_key_exists(Date("n-j-Y"), $no_live_stream)) || $_GET['livetest'] == "golive") {
           If (mysql_ping()) {
+            $temp = mysql_query("select title, page_id from article where title like 'Bulletin %'");
+            While($tr = mysql_fetch_assoc($temp)) {
+              preg_match('/([0-9]{1,4})[_\\.\/-]([0-9]{1,2})[_\\.\/-]([0-9]{1,4})/i', $tr["title"], $matches);
+              If (isset($matches[1])) {
+                If (strlen($matches[1]) == 4) {
+                  $bulletin_db[$matches[1]."-".($matches[2] - 0)."-".($matches[3] - 0)] = "/article/".$tr["page_id"];
+                }
+                If (strlen($matches[3]) == 4) {
+                  $bulletin_db[$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = "/article/".$tr["page_id"];
+                }
+                If (strlen($matches[3]) != 4 && strlen($matches[1]) != 4) {
+                  $bulletin_db["20".$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = "/article/".$tr["page_id"];
+                }
+              }
+            }
             $temp = mysql_query("select title, speaker, file_date, link from podcast where file_date = '".date("Y-m-d")."' and zone = 1 Order by status desc");
             $tr = mysql_fetch_assoc($temp);
           }
@@ -68,6 +83,9 @@ else {
           echo '<h3>Live Stream of Service</h3>';
             If (isset($tr["title"])) {
               Echo "<h4>".$tr["title"].(isset($tr["speaker"]) && trim($tr["speaker"]) != ""?" (".$tr["speaker"].")":"")."</h4>";
+            }
+            if (isset($bulletin_db[date("Y-n-j")])) {
+            Echo "<p><a href='".$bulletin_db[date("Y-n-j")]."' target = '_blank'>Bulletin</a></p>";
             }
           echo '<iframe id="liveStream" src="http://streaming.priserv.com/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
           echo "<script>";
