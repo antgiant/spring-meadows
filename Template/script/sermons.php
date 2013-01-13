@@ -34,6 +34,21 @@
       }
     }
   }
+  $temp = mysql_query("select title, page_id from article where title like 'Bulletin %'");
+  While($tr = mysql_fetch_assoc($temp)) {
+    preg_match('/([0-9]{1,4})[_\\.\/-]([0-9]{1,2})[_\\.\/-]([0-9]{1,4})/i', $tr["title"], $matches);
+    If (isset($matches[1])) {
+      If (strlen($matches[1]) == 4) {
+        $bulletin_db[$matches[1]."-".($matches[2] - 0)."-".($matches[3] - 0)] = "/article/".$tr["page_id"];
+      }
+      If (strlen($matches[3]) == 4) {
+        $bulletin_db[$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = "/article/".$tr["page_id"];
+      }
+      If (strlen($matches[3]) != 4 && strlen($matches[1]) != 4) {
+        $bulletin_db["20".$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = "/article/".$tr["page_id"];
+      }
+    }
+  }
   $temp = mysql_query("select title, speaker, file_date, link, status from podcast where zone = 1 order by file_date desc");
   While($tr = mysql_fetch_assoc($temp)) {
       $podcast[date("Y-n-j", strtotime($tr["file_date"]))] = $tr;
@@ -107,7 +122,10 @@
               print ($link == ""?"":"</a>");
               print ($preacher == ""?"":" - ".$preacher);
             }
-            if (isset($bufiles[$year.'-'.$i."-".$day])) {
+            if (isset($bulletin_db[$year.'-'.$i."-".$day])) {
+              Print " &nbsp;&nbsp;<a href = '".$bulletin_db[$year.'-'.$i."-".$day]."'>Bulletin</a>";
+            }
+            else if (isset($bufiles[$year.'-'.$i."-".$day])) {
               Print " &nbsp;&nbsp;<a href = 'site/1/docs/".$bufiles[$year.'-'.$i."-".$day]."'>Bulletin</a>";
             }
             Print "\n    </li>\n";
