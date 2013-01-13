@@ -47,7 +47,7 @@ else {
   </div>
 </div>
 <div id="pageArea" class="centerWrapper fullBoxShadow">
-  <img src="/site/1/template/images/logo_two_lines_front.png" alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" />
+  <img id="titleImage" src="/site/1/template/images/logo_two_lines_front.png" alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" />
   <div class="headerWrapper lightfullBoxShadow">
     <div id="headerArea">
       <?php

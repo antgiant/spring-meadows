@@ -245,7 +245,7 @@
     min-width: 100px;
   }
   #titleImage {
-    margin-top: 2%;
+    margin: 1em;
   }
   #specialAnnounce {
     width: 90%; 
@@ -312,11 +312,6 @@
   @media (min-width: 1250px) {
     #superGraphic {
       width: 64%;
-    }
-    #titleImage {
-      float: left;
-      max-width: 36%;
-      margin-top: 8%;
     }
   }
   #titleArea p {
