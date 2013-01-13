@@ -610,3 +610,8 @@
       display: none;
     }
   }
+  .clear_all {
+    content: "";
+    display: table;
+    clear: both;
+  }

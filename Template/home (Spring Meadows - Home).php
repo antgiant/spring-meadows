@@ -43,7 +43,12 @@ else {
 <body>
 <div id="pageArea" class="centerWrapper fullBoxShadow">
   <img id="titleImage" src="/site/1/template/images/logo_two_lines_front.png" alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" />
-  <div class="floatRight" style="padding-bottom: 1em;">##search##</div>
+  <br clear = "all" />
+  <div class="floatRight" style="margin-bottom: 1em;">##search##</div>
+  <br class="clear_all" />
+  <nav class="topMenu serif italics">
+    ##menu-horizontal##
+  </nav>
   <div class="headerWrapper lightfullBoxShadow">
     <div id="headerArea">
       <?php
@@ -191,9 +196,6 @@ echo "</div>";
     </div>
 
   </div>
-  <nav class="topMenu serif italics">
-    ##menu-horizontal##
-  </nav>
   <section>
     <div id="specialAnnounce">##custom4##</div>
     <article id="contentArea">
