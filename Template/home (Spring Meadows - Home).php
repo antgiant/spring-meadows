@@ -133,6 +133,15 @@ echo "</div>";
         </div>
         <div class="superElement">
           <div class="superImage">
+            <a href="http://www.springmeadows.org/calendar.php?action=event_details&id=278&date=2012-02-24"><img src="/site/1/images/5k banner.jpg" alt="5K" /></a>
+          </div>
+          <p class="superText">
+            <a href="http://www.springmeadows.org/calendar.php?action=event_details&id=280&date=2013-02-24">5K<br />
+            February 24</a>
+          </p>
+        </div>
+        <div class="superElement">
+          <div class="superImage">
             <img src="/site/1/template/images/6_An_Encouraging_Church.jpg" alt="An Encouraging Church" />
           </div>
           <p class="superText">
