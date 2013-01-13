@@ -41,13 +41,9 @@ else {
 </head>
 
 <body>
-<div id="siteIdentifier">
-  <div id="titleWrapper" class="centerWrapper">
-        <div class="floatRight" style="padding-bottom: 1em;">##search##</div>
-  </div>
-</div>
 <div id="pageArea" class="centerWrapper fullBoxShadow">
   <img id="titleImage" src="/site/1/template/images/logo_two_lines_front.png" alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" />
+  <div class="floatRight" style="padding-bottom: 1em;">##search##</div>
   <div class="headerWrapper lightfullBoxShadow">
     <div id="headerArea">
       <?php
