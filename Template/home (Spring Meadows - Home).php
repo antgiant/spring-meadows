@@ -20,7 +20,7 @@ else {
 <meta charset=utf-8>
 <meta name = "viewport" content = "initial-scale = 1.0">
 <title><?php echo $_SESSION["_"]["siteinfo"]["title"]." - ".$content["title"]; ?></title>
-<link rel="stylesheet" type="text/css" media="all" href="/site/1/template/css/theme.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/site/1/template/css/theme-test.css" />
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -47,6 +47,7 @@ else {
   </div>
 </div>
 <div id="pageArea" class="centerWrapper fullBoxShadow">
+  <img src="/site/1/template/images/logo_two_lines_front.png" alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" />
   <div class="headerWrapper lightfullBoxShadow">
     <div id="headerArea">
       <?php
@@ -107,7 +108,6 @@ echo "</div>";
         }
         else {
       ?>
-      <img id="titleImage" src="/site/1/template/images/logo_two_lines_front.png" alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" />
       <div id="superGraphic">
         <div class="superElement first">
           <div class="superImage">

@@ -4,7 +4,7 @@
 <meta charset=utf-8>
 <meta name = "viewport" content = "initial-scale = 1.0">
 <title><?php echo $_SESSION["_"]["siteinfo"]["title"]." - ".$content["title"]; ?></title>
-<link rel="stylesheet" type="text/css" media="all" href="/site/1/template/css/theme.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/site/1/template/css/theme-test.css" />
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
