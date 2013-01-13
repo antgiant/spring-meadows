@@ -500,6 +500,7 @@
   .footerWrapper {
     border-top: 2px solid #eee;
     padding-top: 2%;
+    max-width: 1280px;
   }
   .footerWrapper .left {
     float: left;
