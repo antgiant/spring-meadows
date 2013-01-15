@@ -6,9 +6,22 @@ _gaq.push(['b._setAllowLinker', true]);
 _gaq.push(['b._trackPageview']);
       var tmp = document.getElementsByTagName('a');
       for(i = 0; i < tmp.length; i++){
+        //Special case for Church website Login
+        if (tmp[i].href.toLowerCase().indexOf('wintersp.securelytransact.com%2flogin.php') > -1 ||
+            tmp[i].href.toLowerCase().indexOf('wintersp.securelytransact.com/login.php') > -1) {
+         tmp[i].onclick =
+           function() {
+            _gaq.push([
+                'b._trackEvent',
+                'outgoing_links',
+                this.href.replace(/^(https|http):\/\//i, ''),
+                'Member Login'
+            ]);
+          }
+        }
         if (tmp[i].href.indexOf(location.host.replace(/^www\./i, '')) == -1 && tmp[i].href.match(/^(https|http):\/\//i) &&
             tmp[i].href.toLowerCase().indexOf('wintersprings22.adventistchurchconnect.org') == -1){
-          if (tmp[i].href.toLowerCase().indexOf('www.adventistgiving.org/?OrgID=ANTBR1') > -1) {
+          if (tmp[i].href.toLowerCase().indexOf('www.adventistgiving.org/?orgid=antbr1') > -1) {
            tmp[i].onclick =
              function() {
               _gaq.push([
@@ -19,8 +32,8 @@ _gaq.push(['b._trackPageview']);
               ]);
             }
           }
-          else if (tmp[i].href.toLowerCase().indexOf('maps.google.com/maps?saddr=&daddr=5783+N+Ronald+Reagan+Blvd.+Sanford%2C+FL+32773') > -1 ||
-                   tmp[i].href.toLowerCase().indexOf('maps.apple.com/maps?daddr=5783+N+Ronald+Reagan+Blvd.+Sanford%2C+FL+32773') > -1) {
+          else if (tmp[i].href.toLowerCase().indexOf('maps.google.com/maps?saddr=&daddr=5783+n+ronald+reagan+blvd.+sanford%2c+fl+32773') > -1 ||
+                   tmp[i].href.toLowerCase().indexOf('maps.apple.com/maps?daddr=5783+n+ronald+reagan+blvd.+sanford%2c+fl+32773') > -1) {
            tmp[i].onclick =
              function() {
               _gaq.push([
