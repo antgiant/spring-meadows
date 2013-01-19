@@ -4,6 +4,15 @@ _gaq.push(['b._setAccount', 'UA-1086526-2'], ['b._trackPageview']);
 _gaq.push(['b._setDomainName', 'springmeadows.org']);
 _gaq.push(['b._setAllowLinker', true]);
 _gaq.push(['b._trackPageview']);
+if (location.href.toLowerCase().indexOf('%2fbulletins%2fbulletin-') > -1 ||
+    location.href.toLowerCase().indexOf('/bulletins/bulletin-') > -1) {
+  _gaq.push([
+    'b._trackEvent',
+    'special_links',
+    location.href.replace(/^(https|http):\/\//i, ''),
+    'Bulletin'
+  ]);
+}
       var tmp = document.getElementsByTagName('a');
       for(i = 0; i < tmp.length; i++){
         //Special case for Church website Login
