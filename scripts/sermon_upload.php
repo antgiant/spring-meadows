@@ -6,7 +6,7 @@
 </form>
 <?php
 foreach ($_FILES["file"]["error"] as $key => $error) {
-    if ($error == UPLOAD_ERR_OK) {
+    if ($error == UPLOAD_ERR_OK && $_FILES["file"]["type"][$key] == "audio/mp3") {
         $tmp_name = $_FILES["file"]["tmp_name"][$key];
         $name = $_FILES["file"]["name"][$key];
         $name = preg_replace("/[^a-z0-9 \[\]{}.,()&`=\-]/i", "_", $name);
