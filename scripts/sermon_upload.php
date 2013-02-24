@@ -21,7 +21,9 @@ if (!(array_search($_SERVER["HTTP_X_REAL_IP"], $allowed_ips) === FALSE)) {
           //Must be 100KB or larger
           && $_FILES["file"]["size"][$key] > 102400
           //File must not exist
-          && !file_exists($path.preg_replace("/[^a-z0-9 \[\]{}.,()&`=\-]/i", "_", $_FILES["file"]["name"][$key]))) {
+          && !file_exists($path.preg_replace("/[^a-z0-9 \[\]{}.,()&`=\-]/i", "_", $_FILES["file"]["name"][$key]))
+          //Must have a functional DB connection
+          && mysql_ping()) {
           $tmp_name = $_FILES["file"]["tmp_name"][$key];
           $name = preg_replace("/[^a-z0-9 \[\]{}.,()&`=\-]/i", "_", $_FILES["file"]["name"][$key]);
           move_uploaded_file($tmp_name, $path.$name);
