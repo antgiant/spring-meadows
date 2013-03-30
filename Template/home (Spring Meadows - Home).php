@@ -96,13 +96,13 @@ else {
 });";
           echo "</script>";
           if (!isset($_GET['chattest']) || $_GET['chattest'] != "chat") {
-echo "<div style='display:none'>";
+//echo "<div style='display:none'>";
           }
 ?>
             <script id="sid0010000016015796269">(function() {function async_load(){s.id="cid0010000016015796269";s.src='http://st.chatango.com/js/gz/emb.js';s.style.cssText="width:350px;height:520px;";s.async=true;s.text='{"handle":"springmeadowschurch","styles":{"b":100,"f":50,"l":"999999","q":"999999","r":100,"s":1,"t":0,"w":0}}';var ss = document.getElementsByTagName('script');for (var i=0, l=ss.length; i < l; i++){if (ss[i].id=='sid0010000016015796269'){ss[i].id +='_';ss[i].parentNode.insertBefore(s, ss[i]);break;}}}var s=document.createElement('script');if (s.async==undefined){if (window.addEventListener) {addEventListener('load',async_load,false);}else if (window.attachEvent) {attachEvent('onload',async_load);}}else {async_load();}})();</script>
 <?php
           if (!isset($_GET['chattest']) || $_GET['chattest'] != "chat") {
-echo "</div>";
+//echo "</div>";
           }
         }
         else {
