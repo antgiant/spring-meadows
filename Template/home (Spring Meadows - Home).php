@@ -63,7 +63,7 @@ else {
           If (mysql_ping()) {
             $temp = mysql_query("select title, page_id from article where title like 'Bulletin %'");
             While($tr = mysql_fetch_assoc($temp)) {
-              preg_match('/([0-9]{1,4})[_\\.\/-]([0-9]{1,2})[_\\.\/-]([0-9]{1,4})/i', $tr["title"], $matches);
+              preg_match('/([0-9]{1,4})[_./-]([0-9]{1,2})[_./-]([0-9]{1,4})/i', $tr["title"], $matches);
               If (isset($matches[1])) {
                 If (strlen($matches[1]) == 4) {
                   $bulletin_db[$matches[1]."-".($matches[2] - 0)."-".($matches[3] - 0)] = "/article/".$tr["page_id"];
@@ -168,7 +168,7 @@ echo "</div>";
             Church
           </p>
         </div>
-        <div class="superElement">
+<!--        <div class="superElement">
           <div class="superImage">
             <a href="http://www.springmeadows.org/calendar.php?action=event_details&id=278&date=2012-12-01"><img src="/site/1/template/images/Daniel_Seminar.png" alt="Prophecy Seminar" /></a>
           </div>
@@ -177,7 +177,7 @@ echo "</div>";
             Seminar</a>
           </p>
         </div>
-        <div class="superElement last">
+-->        <div class="superElement last">
           <div class="superImage">
             <img src="/site/1/template/images/5_A_Growing_Church.jpg" alt="A Growing Church" />
           </div>
