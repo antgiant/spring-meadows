@@ -50,6 +50,10 @@ else {
   <div class="headerWrapper lightfullBoxShadow">
     <div id="headerArea">
       <?php
+  $temp = mysql_query("select * from calendar_details where active = 1 and CategoryID = 13 and DisplayStart <= '".date("Y-m-d")."' and DisplayStop >= '".date("Y-m-d")."' and StartTime <= '".date("H:i:s")."' and StopTime >= '".date("H:i:s")."'");
+  While($tr = mysql_fetch_assoc($temp)) {
+        $DB_Data[] = $tr;
+  }
         $no_live_stream = array(
                                  '10-29-2011' => "We apologize but today's live stream is not possible due to a power outage.",
                                  '11-12-2011' => "We apologize but today's live stream is not available due to a church retreat.",
@@ -59,7 +63,7 @@ else {
 
                                );
         date_default_timezone_set("America/New_York");
-        if((Date("NHi") >= 61030 && Date("NHi") <= 61300 && !array_key_exists(Date("n-j-Y"), $no_live_stream)) || $_GET['livetest'] == "golive") {
+        if((Date("NHi") >= 61030 && Date("NHi") <= 61300 && !array_key_exists(Date("n-j-Y"), $no_live_stream)) || $_GET['livetest'] == "golive" || isset($DB_Data[0])) {
           If (mysql_ping()) {
             $temp = mysql_query("select title, page_id from article where title like 'Bulletin %'");
             While($tr = mysql_fetch_assoc($temp)) {
@@ -78,6 +82,10 @@ else {
             }
             $temp = mysql_query("select title, speaker, file_date, link from podcast where file_date = '".date("Y-m-d")."' and zone = 1 Order by status desc");
             $tr = mysql_fetch_assoc($temp);
+          }
+          if (isset($DB_Data[0])) {
+            $tr["title"] = $DB_Data[0]["Title"];
+            $tr["speaker"] = $DB_Data[0]["ContactName"];
           }
           echo '      <img src="/site/1/template/images/logo_two_lines_front.png" alt="'.$_SESSION[$su]['siteinfo']['name'].'" />';
           echo '<h3>Live Stream of Service</h3>';
@@ -147,15 +155,6 @@ else {
             A<br />
             Forgiving<br />
             Church
-          </p>
-        </div>
-        <div class="superElement">
-          <div class="superImage">
-            <a href="http://www.springmeadows.org/calendar.php?action=event_details&id=278&date=2012-02-24"><img src="/site/1/images/5k banner.jpg" alt="5K" /></a>
-          </div>
-          <p class="superText">
-            <a href="http://www.springmeadows.org/calendar.php?action=event_details&id=280&date=2013-02-24">5K<br />
-            February 24</a>
           </p>
         </div>
         <div class="superElement">
