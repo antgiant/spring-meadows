@@ -19,6 +19,7 @@ else {
 <head>
 <meta charset=utf-8>
 <meta name = "viewport" content = "initial-scale = 1.0">
+<meta name="google-site-verification" content="0NKzJjrbdhMjBsKwO2TecxYzHQe8KK46rckvYfn7F0M" />
 <title><?php echo $_SESSION["_"]["siteinfo"]["title"]." - ".$content["title"]; ?></title>
 <link rel="stylesheet" type="text/css" media="all" href="/site/1/template/css/theme.css" />
 <!--[if lt IE 9]>
@@ -95,12 +96,14 @@ else {
             if (isset($bulletin_db[date("Y-n-j")])) {
             Echo "<p><a href='".$bulletin_db[date("Y-n-j")]."' target = '_blank'>Bulletin</a></p>";
             }
-          echo '<iframe id="liveStream" src="http://streaming.priserv.com/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
+          echo '<iframe id="liveStream" src="http://stream.adventistuniversity.edu/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
+//          echo '<iframe id="liveStream" src="http://www.youtube.com/embed/yTpD7JEwTsA" frameborder="0" allowfullscreen></iframe>';
+//          echo '<iframe id="liveStream" src="http://streaming.priserv.com/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
           echo "<script>";
           echo "  _gaq.push(function() {";
           echo "  var pageTracker = _gat.b._getTrackerByName();";
           echo "  var iframe = document.getElementById('liveStream');";
-          echo "  iframe.src = b.pageTracker._getLinkerUrl('http://streaming.priserv.com/SmoothStreamingPlayer.html');
+          echo "  iframe.src = b.pageTracker._getLinkerUrl('https://mars.adu.edu/SpringMeadowsSDA.html');
 });";
           echo "</script>";
           if (!isset($_GET['chattest']) || $_GET['chattest'] != "chat") {

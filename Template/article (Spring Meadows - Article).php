@@ -9,7 +9,7 @@ exit;
 <html lang="en">
 <head>
 <meta charset=utf-8>
-<meta name = "viewport" content = "initial-scale = 1.0">
+<meta name = "viewport" content = "initial-scale = 1.0"> 
 <title><?php echo $_SESSION["_"]["siteinfo"]["title"]." - ".$content["title"]; ?></title>
 <link rel="stylesheet" type="text/css" media="all" href="/site/1/template/css/theme.css" />
 <!--[if lt IE 9]>
@@ -31,53 +31,48 @@ exit;
 <![endif]-->
 </head>
 
-<body>
-<div id="siteIdentifier">
-  <div id="titleWrapper" class="centerWrapper">
-        <div class="floatRight" style="padding-bottom: 1em; margin-left: 1em;">##search##</div>
-        <div id="socialIcons" class="floatRight"style="padding-bottom: 1em; ">
-		<a href="http://www.facebook.com/pages/Spring-Meadows-Seventh-day-Adventist-Church/252734141407822"><img alt="Facebook Icon" src="/site/1/template/images/social/facebook.png" /></a> <a href="http://twitter.com/meadows_sda"><img alt="Twitter Icon" src="/site/1/template/images/social/twitter.png" /></a> <a href="http://youtube.com/wssdachurch"><img alt="Youtube Icon" src="/site/1/template/images/social/youtube.png" /></a> <a href="http://www.springmeadows.org/rss.php?zone=default"><img alt="RSS Icon" src="/site/1/template/images/social/rss.png" /></a> <a href="mailto:office@wssdachurch.com"><img alt="Email Icon" src="/site/1/template/images/social/email.png" /></a></div>
-  </div>
+<body><div id="siteIdentifier">
+<div class="centerWrapper" id="titleWrapper">
+<div class="floatRight" style="padding-bottom: 1em; margin-left: 1em;">##search##</div>
+
+<div class="floatRight" id="socialIcons" style="padding-bottom: 1em; "><a href="http://www.facebook.com/pages/Spring-Meadows-Seventh-day-Adventist-Church/252734141407822"><img alt="Facebook Icon" src="/site/1/template/images/social/facebook.png" /></a> <a href="http://twitter.com/meadows_sda"><img alt="Twitter Icon" src="/site/1/template/images/social/twitter.png" /></a> <a href="http://youtube.com/springmeadowssda"><img alt="Youtube Icon" src="/site/1/template/images/social/youtube.png" /></a> <a href="http://www.springmeadows.org/rss.php?zone=default"><img alt="RSS Icon" src="/site/1/template/images/social/rss.png" /></a> <a href="mailto:office@springmeadows.org"><img alt="Email Icon" src="/site/1/template/images/social/email.png" /></a></div>
 </div>
-<div id="pageArea" class="centerWrapper fullBoxShadow">
-  <div class="headerWrapper lightfullBoxShadow">
-    <div id="headerArea">
-      <a href="/" title="Front Page"><img class="articleTop floatLeft" src="/site/1/template/images/logo_two_lines.png" alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" /></a>
-      <nav class="topMenu serif italics articleTop">
-        ##menu-horizontal##
-      </nav>
-    </div>
-  </div>
-  <section>
-    <article id="contentArea">
-      <div class="contentWrapper centerWrapper">
-      <nav class="third">
-        <h1 class="navTitle"><?php echo $content["title"]; ?></h1>
-        <p class="center">##subarticles##</p>
-      </nav>
-       <div class="sixty">
-         <h1 style="text-align: left;"><?php echo $content["title"]; ?></h1>
-         <div id="crossBeam">&nbsp;</div>
-          ##content##
-        </div>
-      </div>
-    </article>
-  </section>
 </div>
+
+<div class="centerWrapper fullBoxShadow" id="pageArea">
+<div class="headerWrapper lightfullBoxShadow">
+<div id="headerArea"><a href="/" title="Front Page"><img alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" class="articleTop floatLeft" src="/site/1/template/images/logo_two_lines.png" /></a>
+
+<nav class="topMenu serif italics articleTop">##menu-horizontal##</nav>
+</div>
+</div>
+
+<section>
+<article id="contentArea">
+<div class="contentWrapper centerWrapper">
+<nav class="third">
+<h1 class="navTitle"><?php echo $content["title"]; ?></h1>
+
+<p class="center">##subarticles##</p>
+</nav>
+
+<div class="sixty">
+<h1 style="text-align: left;"><?php echo $content["title"]; ?></h1>
+
+<div id="crossBeam">&nbsp;</div>
+##content##</div>
+</div>
+</article>
+</section>
+</div>
+
 <footer id="footerArea">
-  <div class="footerWrapper centerWrapper">
-    <div class="floatLeft requiredFooter">
-      ##adminlinks##
-      ##footerlinks##
-     <span class="footer">Developed by Spring Meadows Team</span>
-    </div>
-    <script src="/site/1/template/script/accessifyhtml5.jquery.min.js"></script> <script>AccessifyHTML5();</script>
-    <!-- bob[if lt IE 9]>
+<div class="footerWrapper centerWrapper">
+<div class="floatLeft requiredFooter">##adminlinks## ##footerlinks## <span class="footer">Developed by Spring Meadows Team</span></div>
+<script src="/site/1/template/script/accessifyhtml5.jquery.min.js"></script><script>AccessifyHTML5();</script><!-- bob[if lt IE 9]>
       <script src="/site/1/template/script/sylvester.js"></script>
       <script src="/site/1/template/script/pb.transformie.min.js"></script>
-    <! bob [endif]-->
-
-    <script type="text/javascript">
+    <! bob [endif]--><script type="text/javascript">
       //Run Slideshow
       $(function () {
         //Make the first element last so the sideshow behaves as expected.
@@ -157,7 +152,5 @@ exit;
       //Ensure that tables are visible horizontally
       $("table").parent().css("overflow-x", "auto");
       $(document).ready(function(){ $(".video").fitVids(); });
-    </script>
-  </div>
+    </script></div>
 </footer>
-</html>

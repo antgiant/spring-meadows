@@ -98,32 +98,32 @@ a.FeedLink {
     color: #D19800;
     font-size: 18px;
     font-weight: bold; }
-
+	
 .Subhead-16px-Gold {
     font-family: 'lucida grande', tahoma, sans-serif;
     color: #D19800;
     font-size: 16px;
     font-weight: bold; }
-
+	
 .Subhead-14px-italic-Gold {
     font-family: 'lucida grande', tahoma, sans-serif;
     color: #D19800;
     font-size: 14px;
     font-weight: bold;
     font-style : italic; }
-
+	
 .Subhead-18px-Brown {
     font-family: 'lucida grande', tahoma, sans-serif;
     color: #381A0A;
     font-size: 18px;
     font-weight: bold; }
-
+	
 .Subhead-16px-Brown {
     font-family: 'lucida grande', tahoma, sans-serif;
     color: #381A0A;
     font-size: 16px;
     font-weight: bold; }
-
+	
 .Subhead-14px-italic-Brown {
     font-family: 'lucida grande', tahoma, sans-serif;
     color: #381A0A;
@@ -180,14 +180,14 @@ a.devotionteaser:hover {
 
 .bottom_links {
     font-family: 'lucida grande', tahoma, sans-serif;
-    font-size : 8pt;
-    text-align : center;
+    font-size : 8pt; 
+    text-align : center; 
     color : #FFFFFF; }
 
 a.bottom_links {
     font-family: 'lucida grande', tahoma, sans-serif;
-    font-size : 8pt;
-    text-align : center;
+    font-size : 8pt; 
+    text-align : center; 
     color : #FFFFFF; }
 
 a.bottom_links:hover {
@@ -213,7 +213,7 @@ a.footer:hover {
     color : #FFFFFF;
     text-decoration : underline; }
 
-.whatsnew-title {
+.whatsnew-title { 
     font-family: 'lucida grande', tahoma, sans-serif;
     color : #333889;
     font-size : 12px;
@@ -230,7 +230,7 @@ a.footer:hover {
 .whatsnew:hover {
     color : #555555; }
 
-.eventsnew-title {
+.eventsnew-title { 
     font-family: 'lucida grande', tahoma, sans-serif;
     color : #D19800;
     font-size : 12px;
@@ -314,7 +314,7 @@ a   {
     color : #683013;
     text-decoration : underline; }
 
-a:hover {
+a:hover { 
 	color: #9D491D;
 	}
 
@@ -353,14 +353,14 @@ a.printlink:hover {
    	font-family: 'lucida grande', tahoma, sans-serif;
    	color: #000000; }
 
-table {
+table { 
     font-family: 'lucida grande', tahoma, sans-serif;
     font-size: 10pt; }
-
+	
 .GalleryPopupTitle {
     font-family: 'lucida grande', tahoma, sans-serif;
     font-size : 11pt;
-    font-weight: bold;
+    font-weight: bold; 
     color : #555555; }
 
 .GalleryPopupDescription {
@@ -429,7 +429,7 @@ table {
 .GalleryInactive {
     font-family: 'lucida grande', tahoma, sans-serif;
     font-size : 10pt;
-	color : #000000; }
+	color : #000000; }	
 
 a.forum:link {
         color : #000000;
@@ -476,7 +476,7 @@ a.forum:active {
 
 .table_header {
      background-color:#273872;
-     color:#ffffff;
+     color:#ffffff; 
 	 font-family: 'lucida grande', tahoma, sans-serif;
      font-size: 10pt; }
 

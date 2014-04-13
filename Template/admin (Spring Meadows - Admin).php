@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset=utf-8>
-<meta name = "viewport" content = "initial-scale = 1.0">
+<meta name = "viewport" content = "initial-scale = 1.0"> 
 <title><?php echo $_SESSION["_"]["siteinfo"]["title"]." - ".$content["title"]; ?></title>
 <link rel="stylesheet" type="text/css" media="all" href="/site/1/template/css/theme.css" />
 <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
   <div id="titleWrapper" class="centerWrapper">
         <div class="floatRight" style="padding-bottom: 1em; margin-left: 1em;">##search##</div>
         <div id="socialIcons" class="floatRight" style="padding-bottom: 1em; ">
-		<a href="http://www.facebook.com/pages/Spring-Meadows-Seventh-day-Adventist-Church/252734141407822"><img alt="Facebook Icon" src="/site/1/template/images/social/facebook.png" /></a> <a href="http://twitter.com/meadows_sda"><img alt="Twitter Icon" src="/site/1/template/images/social/twitter.png" /></a> <a href="http://youtube.com/wssdachurch"><img alt="Youtube Icon" src="/site/1/template/images/social/youtube.png" /></a> <a href="http://www.springmeadows.org/rss.php?zone=default"><img alt="RSS Icon" src="/site/1/template/images/social/rss.png" /></a> <a href="mailto:office@wssdachurch.com"><img alt="Email Icon" src="/site/1/template/images/social/email.png" /></a></div>
+		<a href="http://www.facebook.com/pages/Spring-Meadows-Seventh-day-Adventist-Church/252734141407822"><img alt="Facebook Icon" src="/site/1/template/images/social/facebook.png" /></a> <a href="http://twitter.com/meadows_sda"><img alt="Twitter Icon" src="/site/1/template/images/social/twitter.png" /></a> <a href="http://youtube.com/springmeadowssda"><img alt="Youtube Icon" src="/site/1/template/images/social/youtube.png" /></a> <a href="http://www.springmeadows.org/rss.php?zone=default"><img alt="RSS Icon" src="/site/1/template/images/social/rss.png" /></a> <a href="mailto:office@springmeadows.org"><img alt="Email Icon" src="/site/1/template/images/social/email.png" /></a></div>
 <!--    <a href="/"><img style="margin-top: -2em;" src="/site/1/template/images/Logo.png" alt="<? print ucwords($_SESSION[$su]['siteinfo']['name']); ?>"/></a>
 -->
   </div>
@@ -64,7 +64,7 @@
       <script src="/site/1/template/script/sylvester.js"></script>
       <script src="/site/1/template/script/pb.transformie.min.js"></script>
     <! bob [endif]-->
-
+    
     <script type="text/javascript">
       //Run Slideshow
       $(function () {
