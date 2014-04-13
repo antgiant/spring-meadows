@@ -43,9 +43,11 @@ else {
 
 <body>
 <div id="siteIdentifier">
-  <div id="titleWrapper" class="centerWrapper">
-        <div class="floatRight" style="padding-bottom: 1em;">##search##</div>
-  </div>
+<div class="centerWrapper" id="titleWrapper">
+<div class="floatRight" style="padding-bottom: 1em; margin-left: 1em;">##search##</div>
+
+<div class="floatRight" id="socialIcons" style="padding-bottom: 1em; "><a href="http://www.facebook.com/pages/Spring-Meadows-Seventh-day-Adventist-Church/252734141407822"><img alt="Facebook Icon" src="/site/1/template/images/social/facebook.png" /></a> <a href="http://twitter.com/meadows_sda"><img alt="Twitter Icon" src="/site/1/template/images/social/twitter.png" /></a> <a href="http://youtube.com/springmeadowssda"><img alt="Youtube Icon" src="/site/1/template/images/social/youtube.png" /></a> <a href="http://www.springmeadows.org/rss.php?zone=default"><img alt="RSS Icon" src="/site/1/template/images/social/rss.png" /></a> <a href="mailto:office@springmeadows.org"><img alt="Email Icon" src="/site/1/template/images/social/email.png" /></a></div>
+</div>
 </div>
 <div id="pageArea" class="centerWrapper fullBoxShadow">
   <div class="headerWrapper lightfullBoxShadow">
