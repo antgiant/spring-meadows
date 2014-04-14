@@ -20,6 +20,7 @@ else {
 <meta charset=utf-8>
 <meta name = "viewport" content = "initial-scale = 1.0">
 <meta name="google-site-verification" content="0NKzJjrbdhMjBsKwO2TecxYzHQe8KK46rckvYfn7F0M" />
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for springmeadows.org" href="/rss.php?zone=default" />
 <title><?php echo $_SESSION["_"]["siteinfo"]["title"]." - ".$content["title"]; ?></title>
 <link rel="stylesheet" type="text/css" media="all" href="/site/1/template/css/theme.css" />
 <!--[if lt IE 9]>
@@ -46,7 +47,22 @@ else {
 <div class="centerWrapper" id="titleWrapper">
 <div class="floatRight" style="padding-bottom: 1em; margin-left: 1em;">##search##</div>
 
-<div class="floatRight" id="socialIcons" style="padding-bottom: 1em; "><a href="http://www.facebook.com/pages/Spring-Meadows-Seventh-day-Adventist-Church/252734141407822"><img alt="Facebook Icon" src="/site/1/template/images/social/facebook.png" /></a> <a href="http://twitter.com/meadows_sda"><img alt="Twitter Icon" src="/site/1/template/images/social/twitter.png" /></a> <a href="http://youtube.com/springmeadowssda"><img alt="Youtube Icon" src="/site/1/template/images/social/youtube.png" /></a> <a href="http://www.springmeadows.org/rss.php?zone=default"><img alt="RSS Icon" src="/site/1/template/images/social/rss.png" /></a> <a href="mailto:office@springmeadows.org"><img alt="Email Icon" src="/site/1/template/images/social/email.png" /></a></div>
+<div class="floatRight" id="socialIcons" style="padding-bottom: 1em; ">
+            <span id="directions">
+<?php
+                    $ver = array();
+                    $dir = '';
+                    $dest = urlencode('5783 N Ronald Reagan Blvd. Sanford, FL 32773');
+                    preg_match("/.*CPU [^ ]*( ){0,1}OS ([0-9]+)_([0-9]+) like Mac OS.*/", $_SERVER['HTTP_USER_AGENT'], $ver);
+                    //Check for IOS Version 6 or above
+                    //If you are editing this be sure to edit the template as well.
+                    $dir = 'http://maps.google.com/maps?saddr=&amp;daddr='.$dest;
+                    if(isset($ver[2]) && $ver[2] >= 6) {
+                        $dir = 'http://maps.apple.com/maps?daddr='.$dest;
+                    }
+                  ?>
+		<a href="<?php echo $dir; ?>"><img alt="Directions Icon" src="/site/1/template/images/social/directions.png" /></a>
+		<a href="http://www.facebook.com/pages/Spring-Meadows-Seventh-day-Adventist-Church/252734141407822"><img alt="Facebook Icon" src="/site/1/template/images/social/facebook.png" /></a> <a href="http://twitter.com/meadows_sda"><img alt="Twitter Icon" src="/site/1/template/images/social/twitter.png" /></a> <a href="http://youtube.com/springmeadowssda"><img alt="Youtube Icon" src="/site/1/template/images/social/youtube.png" /></a> <a href="mailto:office@springmeadows.org"><img alt="Email Icon" src="/site/1/template/images/social/email.png" /></a></span></div>
 </div>
 </div>
 <div id="pageArea" class="centerWrapper fullBoxShadow">
