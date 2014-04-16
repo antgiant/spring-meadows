@@ -68,7 +68,11 @@ else {
 <div id="pageArea" class="centerWrapper fullBoxShadow">
   <div class="headerWrapper lightfullBoxShadow">
     <div id="headerArea">
-      <?php
+     <a href="/" title="Front Page"><img alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" class="articleTop floatLeft" src="/site/1/template/images/logo_two_lines.png" /></a>
+
+     <nav class="topMenu serif italics articleTop">##menu-horizontal##</nav>
+  </div>
+<?php
   $temp = mysql_query("select * from calendar_details where active = 1 and CategoryID = 13 and DisplayStart <= '".date("Y-m-d")."' and DisplayStop >= '".date("Y-m-d")."' and StartTime <= '".date("H:i:s")."' and StopTime >= '".date("H:i:s")."'");
   While($tr = mysql_fetch_assoc($temp)) {
         $DB_Data[] = $tr;
@@ -106,7 +110,6 @@ else {
             $tr["title"] = $DB_Data[0]["Title"];
             $tr["speaker"] = $DB_Data[0]["ContactName"];
           }
-          echo '      <img src="/site/1/template/images/logo_two_lines_front.png" alt="'.$_SESSION[$su]['siteinfo']['name'].'" />';
           echo '<h3>Live Stream of Service</h3>';
             If (isset($tr["title"])) {
               Echo "<h4>".$tr["title"].(isset($tr["speaker"]) && trim($tr["speaker"]) != ""?" (".$tr["speaker"].")":"")."</h4>";
@@ -136,7 +139,6 @@ else {
         }
         else {
       ?>
-      <img id="titleImage" src="/site/1/template/images/logo_two_lines_front.png" alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" />
       <div id="superGraphic">
         <div class="superElement first">
           <div class="superImage">
@@ -212,12 +214,7 @@ else {
       <div><p><?php echo $no_live_stream[Date("n-j-Y")]; ?></p></div>
 <?php } ?>
     <?php } ?>
-    </div>
-
   </div>
-  <nav class="topMenu serif italics">
-    ##menu-horizontal##
-  </nav>
   <section>
     <div id="specialAnnounce">##custom4##</div>
     <article id="contentArea">
