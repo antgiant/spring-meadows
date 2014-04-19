@@ -51,7 +51,7 @@ else {
 <div id="pageArea" class="centerWrapper fullBoxShadow">
   <div class="floatRight" style="margin-left: 1em; margin-right:1px;">##search##</div>
   <div class="headerWrapper lightfullBoxShadow" style="margin-bottom:0">
-    <div id="headerArea">
+    <div id="headerArea" style="background-image:none;">
      <a href="/" title="Front Page"><img alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" class="articleTop floatLeft" src="/site/1/template/images/logo_two_lines.png" /></a>
 
      <nav class="topMenu serif italics articleTop">##menu-horizontal##</nav>
