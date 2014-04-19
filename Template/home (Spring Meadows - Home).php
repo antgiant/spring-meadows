@@ -40,14 +40,36 @@ else {
   }
 </style>
 <![endif]-->
+<style>
+  table {
+    display:none;
+  }
+</style>
 </head>
 
 <body>
-<div id="siteIdentifier">
-<div class="centerWrapper" id="titleWrapper">
-<div class="floatRight" style="padding-bottom: 1em; margin-left: 1em;">##search##</div>
+<div id="pageArea" class="centerWrapper fullBoxShadow">
+  <div class="floatRight" style="margin-left: 1em; margin-right:1px;">##search##</div>
+  <div class="headerWrapper lightfullBoxShadow" style="margin-bottom:0">
+    <div id="headerArea">
+     <a href="/" title="Front Page"><img alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" class="articleTop floatLeft" src="/site/1/template/images/logo_two_lines.png" /></a>
 
-<div class="floatRight" id="socialIcons" style="padding-bottom: 1em; ">
+     <nav class="topMenu serif italics articleTop">##menu-horizontal##</nav>
+    </div>
+  </div>
+  <section>
+    <article id="contentArea">
+      <div class="contentWrapper centerWrapper">
+<!--        ##breadcrumbs##-->
+        ##content##
+      <aside></aside>
+      </div>
+    </article>
+  </section>
+</div>
+<footer id="footerArea">
+  <div class="footerWrapper centerWrapper" style="border: 0; padding-top: 0;">
+       <div class="floatRight" id="socialIcons">
             <span id="directions">
 <?php
                     $ver = array();
@@ -63,170 +85,6 @@ else {
                   ?>
 		<a href="<?php echo $dir; ?>"><img alt="Directions Icon" src="/site/1/template/images/social/directions.png" /></a>
 		<a href="http://www.facebook.com/pages/Spring-Meadows-Seventh-day-Adventist-Church/252734141407822"><img alt="Facebook Icon" src="/site/1/template/images/social/facebook.png" /></a> <a href="http://twitter.com/meadows_sda"><img alt="Twitter Icon" src="/site/1/template/images/social/twitter.png" /></a> <a href="http://youtube.com/springmeadowssda"><img alt="Youtube Icon" src="/site/1/template/images/social/youtube.png" /></a> <a href="mailto:office@springmeadows.org"><img alt="Email Icon" src="/site/1/template/images/social/email.png" /></a></span></div>
-</div>
-</div>
-<div id="pageArea" class="centerWrapper fullBoxShadow">
-  <div class="headerWrapper lightfullBoxShadow">
-    <div id="headerArea">
-     <a href="/" title="Front Page"><img alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" class="articleTop floatLeft" src="/site/1/template/images/logo_two_lines.png" /></a>
-
-     <nav class="topMenu serif italics articleTop">##menu-horizontal##</nav>
-  </div>
-<?php
-  $temp = mysql_query("select * from calendar_details where active = 1 and CategoryID = 13 and DisplayStart <= '".date("Y-m-d")."' and DisplayStop >= '".date("Y-m-d")."' and StartTime <= '".date("H:i:s")."' and StopTime >= '".date("H:i:s")."'");
-  While($tr = mysql_fetch_assoc($temp)) {
-        $DB_Data[] = $tr;
-  }
-        $no_live_stream = array(
-                                 '10-29-2011' => "We apologize but today's live stream is not possible due to a power outage.",
-                                 '11-12-2011' => "We apologize but today's live stream is not available due to a church retreat.",
-//                                 '9-29-2012' => "We apologize but we are currently having technical problems with today's live stream.",
-                                 '10-13-2012' => "We apologize but today's live stream is not available due to technical problems.",
-//                                 '10-27-2012' => "We apologize but today's live stream is currently having technical problems.",
-
-                               );
-        date_default_timezone_set("America/New_York");
-        if((Date("NHi") >= 61030 && Date("NHi") <= 61300 && !array_key_exists(Date("n-j-Y"), $no_live_stream)) || $_GET['livetest'] == "golive" || isset($DB_Data[0])) {
-          If (mysql_ping()) {
-            $temp = mysql_query("select title, page_id from article where title like 'Bulletin %'");
-            While($tr = mysql_fetch_assoc($temp)) {
-              preg_match('/([0-9]{1,4})[_./-]([0-9]{1,2})[_./-]([0-9]{1,4})/i', $tr["title"], $matches);
-              If (isset($matches[1])) {
-                If (strlen($matches[1]) == 4) {
-                  $bulletin_db[$matches[1]."-".($matches[2] - 0)."-".($matches[3] - 0)] = "/article/".$tr["page_id"];
-                }
-                If (strlen($matches[3]) == 4) {
-                  $bulletin_db[$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = "/article/".$tr["page_id"];
-                }
-                If (strlen($matches[3]) != 4 && strlen($matches[1]) != 4) {
-                  $bulletin_db["20".$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = "/article/".$tr["page_id"];
-                }
-              }
-            }
-            $temp = mysql_query("select title, speaker, file_date, link from podcast where file_date = '".date("Y-m-d")."' and zone = 1 Order by status desc");
-            $tr = mysql_fetch_assoc($temp);
-          }
-          if (isset($DB_Data[0])) {
-            $tr["title"] = $DB_Data[0]["Title"];
-            $tr["speaker"] = $DB_Data[0]["ContactName"];
-          }
-          echo '<h3>Live Stream of Service</h3>';
-            If (isset($tr["title"])) {
-              Echo "<h4>".$tr["title"].(isset($tr["speaker"]) && trim($tr["speaker"]) != ""?" (".$tr["speaker"].")":"")."</h4>";
-            }
-            if (isset($bulletin_db[date("Y-n-j")])) {
-            Echo "<p><a href='".$bulletin_db[date("Y-n-j")]."' target = '_blank'>Bulletin</a></p>";
-            }
-          echo '<iframe id="liveStream" src="http://stream.adventistuniversity.edu/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
-//          echo '<iframe id="liveStream" src="http://www.youtube.com/embed/yTpD7JEwTsA" frameborder="0" allowfullscreen></iframe>';
-//          echo '<iframe id="liveStream" src="http://streaming.priserv.com/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
-          echo "<script>";
-          echo "  _gaq.push(function() {";
-          echo "  var pageTracker = _gat.b._getTrackerByName();";
-          echo "  var iframe = document.getElementById('liveStream');";
-          echo "  iframe.src = b.pageTracker._getLinkerUrl('https://mars.adu.edu/SpringMeadowsSDA.html');
-});";
-          echo "</script>";
-          if (!isset($_GET['chattest']) || $_GET['chattest'] != "chat") {
-//echo "<div style='display:none'>";
-          }
-?>
-            <script id="sid0010000016015796269">(function() {function async_load(){s.id="cid0010000016015796269";s.src='http://st.chatango.com/js/gz/emb.js';s.style.cssText="width:350px;height:520px;";s.async=true;s.text='{"handle":"springmeadowschurch","styles":{"b":100,"f":50,"l":"999999","q":"999999","r":100,"s":1,"t":0,"w":0}}';var ss = document.getElementsByTagName('script');for (var i=0, l=ss.length; i < l; i++){if (ss[i].id=='sid0010000016015796269'){ss[i].id +='_';ss[i].parentNode.insertBefore(s, ss[i]);break;}}}var s=document.createElement('script');if (s.async==undefined){if (window.addEventListener) {addEventListener('load',async_load,false);}else if (window.attachEvent) {attachEvent('onload',async_load);}}else {async_load();}})();</script>
-<?php
-          if (!isset($_GET['chattest']) || $_GET['chattest'] != "chat") {
-//echo "</div>";
-          }
-        }
-        else {
-      ?>
-      <div id="superGraphic">
-        <div class="superElement first">
-          <div class="superImage">
-            <img src="/site/1/template/images/1_A_Caring_Church.jpg" alt="A Caring Church" />
-          </div>
-          <p class="superText">
-            A<br />
-            Caring<br />
-            Church
-          </p>
-        </div>
-        <div class="superElement">
-          <div class="superImage">
-            <img src="/site/1/template/images/2_A_Friendly_Church.jpg" alt="A Friendly Church" />
-          </div>
-          <p class="superText">
-            A<br />
-            Friendly<br />
-            Church
-          </p>
-        </div>
-        <div class="superElement">
-          <div class="superImage">
-            <img src="/site/1/template/images/3_A_Loving_Church.jpg" alt="A Loving Church" />
-          </div>
-          <p class="superText">
-            A<br />
-            Loving<br />
-            Church
-          </p>
-        </div>
-        <div class="superElement">
-          <div class="superImage">
-            <img src="/site/1/template/images/4_A_Forgiving_Church.jpg" alt="A Forgiving Church" />
-          </div>
-          <p class="superText">
-            A<br />
-            Forgiving<br />
-            Church
-          </p>
-        </div>
-        <div class="superElement">
-          <div class="superImage">
-            <img src="/site/1/template/images/6_An_Encouraging_Church.jpg" alt="An Encouraging Church" />
-          </div>
-          <p class="superText">
-            An<br />
-            Encouraging<br />
-            Church
-          </p>
-        </div>
-<!--        <div class="superElement">
-          <div class="superImage">
-            <a href="http://www.springmeadows.org/calendar.php?action=event_details&id=278&date=2012-12-01"><img src="/site/1/template/images/Daniel_Seminar.png" alt="Prophecy Seminar" /></a>
-          </div>
-          <p class="superText">
-            <a href="http://www.springmeadows.org/calendar.php?action=event_details&id=278&date=2012-12-01">Prophecy<br />
-            Seminar</a>
-          </p>
-        </div>
--->        <div class="superElement last">
-          <div class="superImage">
-            <img src="/site/1/template/images/5_A_Growing_Church.jpg" alt="A Growing Church" />
-          </div>
-          <p class="superText">
-            A<br />
-            Growing<br />
-            Church
-          </p>
-        </div>
-      </div>
-<?php if (array_key_exists(Date("n-j-Y"), $no_live_stream)) { ?>
-      <div><p><?php echo $no_live_stream[Date("n-j-Y")]; ?></p></div>
-<?php } ?>
-    <?php } ?>
-  </div>
-  <section>
-    <div id="specialAnnounce">##custom4##</div>
-    <article id="contentArea">
-      <div class="contentWrapper centerWrapper">
-        ##content##
-      <aside></aside>
-      </div>
-    </article>
-  </section>
-</div>
-<footer id="footerArea">
-  <div class="footerWrapper centerWrapper" style="border: 0; padding-top: 0;">
     <div class="floatLeft requiredFooter">
       ##adminlinks##
       ##footerlinks##
