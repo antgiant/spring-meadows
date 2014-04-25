@@ -86,7 +86,7 @@
                     else {
                       $link =  'http://maps.google.com/maps?saddr=&amp;daddr='.$dest;
                     }
-                    Echo '			<a href="$link"><img src="/site/1/template/images//direction_button.png" /></a>';
+                    Echo '			<a href="'.$link.'"><img src="/site/1/template/images/direction_button.png" /></a>';
                   ?></p>
 </div>
 
