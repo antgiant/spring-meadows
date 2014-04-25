@@ -50,11 +50,11 @@ else {
 <body>
 <div id="pageArea" class="centerWrapper fullBoxShadow">
   <div class="floatRight" style="margin-left: 1em; margin-right:1px;">##search##</div>
-  <div class="headerWrapper lightfullBoxShadow" style="margin-bottom:0">
+  <div class="headerWrapper lightfullBoxShadow" style="margin-bottom:0; margin-top:30px">
     <div id="headerArea" style="background-image:none;">
-     <a href="/" title="Front Page"><img alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" class="articleTop floatLeft" src="/site/1/template/images/logo_two_lines.png" /></a>
+     <a href="/" title="Front Page"><img alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" class="articleTop floatLeft" src="/site/1/template/images/logo_two_lines_new.png" /></a>
 
-     <nav class="topMenu serif italics articleTop">##menu-horizontal##</nav>
+     <nav class="topMenu serif italics articleTop" style="margin-bottom:0; margin-top:0">##menu-horizontal##</nav>
     </div>
   </div>
   <section>
