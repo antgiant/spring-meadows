@@ -113,5 +113,6 @@ If (false) {
 
 <div class="third" style="margin-right: 0px; border-right-width: 0px;">
 <p><a href="/calendar.php?view=month"><img src="/site/1/template/images/upcoming_events_new.jpg" /></a></p>
+##calendarlist##
 </div>
 </div>
