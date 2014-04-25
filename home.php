@@ -43,9 +43,9 @@
             if (isset($bulletin_db[date("Y-n-j")])) {
             Echo "<p><a href='".$bulletin_db[date("Y-n-j")]."' target = '_blank'>Bulletin</a></p>";
             }
-          echo '<iframe id="liveStream" src="http://stream.adventistuniversity.edu/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
-//          echo '<iframe id="liveStream" src="http://www.youtube.com/embed/yTpD7JEwTsA" frameborder="0" allowfullscreen></iframe>';
-//          echo '<iframe id="liveStream" src="http://streaming.priserv.com/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
+          echo '<iframe id="liveStream" width="640px" heigth="510px" src="http://stream.adventistuniversity.edu/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
+//          echo '<iframe id="liveStream" width="640px" heigth="510px" src="http://www.youtube.com/embed/yTpD7JEwTsA" frameborder="0" allowfullscreen></iframe>';
+//          echo '<iframe id="liveStream" width="640px" heigth="510px" src="http://streaming.priserv.com/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
           echo "<script>";
           echo "  _gaq.push(function() {";
           echo "  var pageTracker = _gat.b._getTrackerByName();";
@@ -63,7 +63,7 @@
         }
         else {
       ?>
-<div id="superGraphic" style="height:initial; padding-top:0.5em"><img alt="A Caring Church" src="/site/1/template/images/1_A_Caring_Church.jpg" /></div>
+<div id="superGraphic" style="height:initial; padding-top:0.5em; width:100%;"><img style="width:100%" alt="A Caring Church" src="/site/1/template/images/1_A_Caring_Church.jpg" /></div>
 <?php if (array_key_exists(Date("n-j-Y"), $no_live_stream)) { ?>
 
 <div>
@@ -112,6 +112,6 @@ If (false) {
 <?php } ?></div>
 
 <div class="third" style="margin-right: 0px; border-right-width: 0px;">
-<p><a href="/calendar.php?view=month"><img src="/site/1/template/images/upcoming_events.jpg" /></a></p>
+<p><a href="/calendar.php?view=month"><img src="/site/1/template/images/upcoming_events_new.jpg" /></a></p>
 </div>
 </div>
