@@ -63,7 +63,14 @@
         }
         else {
       ?>
-<div id="superGraphic" style="height:initial; padding-top:0.5em; width:100%;"><img style="width:100%" alt="A Caring Church" src="/site/1/template/images/1_A_Caring_Church.jpg" /></div>
+<div id="superGraphic" style="height:initial; padding-top:0.5em; width:100%;">
+<ul class="bxslider">
+	<li><img alt="A Caring Church" src="/site/1/template/images/1_A_Caring_Church.jpg" /></li>
+	<li><img alt="A Friendly Church" src="/site/1/template/images/2_A_Friendly_Church.jpg" /></li>
+	<li><img alt="A Loving Church" src="/site/1/template/images/3_A_Loving_Church.jpg" /></li>
+	<li><img alt="A Forgiving Church" src="/site/1/template/images/4_A_Forgiving_Church.jpg" /></li>
+</ul>
+</div>
 <?php if (array_key_exists(Date("n-j-Y"), $no_live_stream)) { ?>
 
 <div>
@@ -113,6 +120,5 @@ If (false) {
 
 <div class="third" style="margin-right: 0px; border-right-width: 0px;">
 <p><a href="/calendar.php?view=month"><img src="/site/1/template/images/upcoming_events_new.jpg" /></a></p>
-##calendarlist##
-</div>
+##calendarlist##</div>
 </div>

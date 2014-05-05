@@ -31,6 +31,8 @@ else {
 <![endif]-->
 <script type="text/javascript" src="/site/1/template/script/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/site/1/template/script/jquery.lwtCountdown-1.0.js"></script>
+<script src="/site/1/template/script/jquery.bxslider/jquery.bxslider.min.js"></script>
+<link href="/site/1/template/script/jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
 <script type="text/javascript" src="/site/1/template/script/misc.js"></script>
 <!--[if lt IE 8]>
 <style type="text/css">
@@ -98,15 +100,8 @@ else {
 
     <script type="text/javascript">
       //Run Slideshow
-      $(function () {
-        //Make the first element last so the sideshow behaves as expected.
-        $('#superGraphic div.superElement:first-child').appendTo('#superGraphic');
-        setInterval(
-        function () {
-          var rnd = (Math.random()*30) - 15;
-          $('#superGraphic div.superElement:first-child').css({'display': 'none'})
-            .children('.superImage').children('img').css({'-webkit-transform': 'rotate('+rnd+'deg)', '-moz-transform': 'rotate('+rnd+'deg)', '-o-transform': 'rotate('+rnd+'deg)', '-ms-transform': 'rotate('+rnd+'deg)', 'transform': 'rotate('+rnd+'deg)'}).end().end().appendTo('#superGraphic').prev().children('.superText').fadeOut(1000).end().end().children('.superText').fadeIn(1000).end().fadeIn(1000);
-        }, 4000);
+      $(document).ready(function(){
+        $('.bxslider').bxSlider();
       });
 
       //Make Audio Work
