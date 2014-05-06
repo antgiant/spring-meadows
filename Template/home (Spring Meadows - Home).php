@@ -71,6 +71,7 @@ else {
 </div>
 <footer id="footerArea">
   <div class="footerWrapper centerWrapper" style="border: 0; padding-top: 0;">
+       <p style="float:left">5783 North Ronald Reagan Blvd. ♦ Sanford, FL, 32773 ♦ <a href="tel:4073271190">407-327-1190</a></p>
        <div class="floatRight" id="socialIcons">
             <span id="directions">
 <?php
@@ -101,7 +102,18 @@ else {
     <script type="text/javascript">
       //Run Slideshow
       $(document).ready(function(){
-        $('.bxslider').bxSlider();
+        $('.bxslider').bxSlider({
+          auto: true,
+          autoHover: true,
+          adaptiveHeight: true,
+          video: true,
+          useCSS: false,
+          tickerHover: true,
+          minSlides: 1,
+          maxSlides: 1,
+          pause: 5000,
+          speed: 1000,
+        });
       });
 
       //Make Audio Work

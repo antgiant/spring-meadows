@@ -1,3 +1,7 @@
+<style type="text/css">.banner {
+    width:100%;
+  }
+</style>
 <?php
   $temp = mysql_query("select * from calendar_details where active = 1 and CategoryID = 13 and DisplayStart <= '".date("Y-m-d")."' and DisplayStop >= '".date("Y-m-d")."' and StartTime <= '".date("H:i:s")."' and StopTime >= '".date("H:i:s")."'");
   While($tr = mysql_fetch_assoc($temp)) {
@@ -63,12 +67,13 @@
         }
         else {
       ?>
-<div id="superGraphic" style="height:initial; padding-top:0.5em; width:100%;">
+<div id="superGraphic" style="height:initial; padding-top:0.5em; width:99%;">
 <ul class="bxslider">
-	<li><img alt="A Caring Church" src="/site/1/template/images/1_A_Caring_Church.jpg" /></li>
-	<li><img alt="A Friendly Church" src="/site/1/template/images/2_A_Friendly_Church.jpg" /></li>
-	<li><img alt="A Loving Church" src="/site/1/template/images/3_A_Loving_Church.jpg" /></li>
-	<li><img alt="A Forgiving Church" src="/site/1/template/images/4_A_Forgiving_Church.jpg" /></li>
+	<li><a href="/article/102"><img alt="Welcome" class="banner" src="/site/1/template/images/temp/Pastor.jpg" /></a></li>
+	<li><a href="https://www.groupvbspro.com/vbs/ez/SpringMeadows"><img alt="Vacation Bible School" class="banner" src="/site/1/template/images/temp/VBS.jpg" /></a></li>
+	<li><a href="/article/67"><img alt="Our Miracle" class="banner" src="/site/1/template/images/temp/Church.jpg" /></a></li>
+	<li><a href="/article/3"><img alt="Ministries" class="banner" src="/site/1/template/images/temp/Children.jpg" /></a></li>
+	<li><a href="/article/120"><img alt="Missions" class="banner" src="/site/1/template/images/temp/Missions.jpg" /></a></li>
 </ul>
 </div>
 <?php if (array_key_exists(Date("n-j-Y"), $no_live_stream)) { ?>
