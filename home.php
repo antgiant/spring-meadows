@@ -69,11 +69,23 @@
       ?>
 <div id="superGraphic" style="height:initial; padding-top:0.5em; width:99%;">
 <ul class="bxslider" style="margin:0">
-	<li><a href="/article/102"><img alt="Welcome" class="banner" src="/site/1/template/images/temp/Pastor.jpg" /></a></li>
-	<li><a href="https://www.groupvbspro.com/vbs/ez/SpringMeadows"><img alt="Vacation Bible School" class="banner" src="/site/1/template/images/temp/VBS.jpg" /></a></li>
+<?php
+If (mysql_ping()) {
+  $temp = mysql_query("select feature_image, feature_title, feature_url from feature where feature_status = 'active' and feature_zone = 1 and feature_activate_date <= '".date("Y-m-d")."' and feature_expire_date >= '".date("Y-m-d")."'");
+  While($tr = mysql_fetch_assoc($temp)) {
+    echo "<li><a href='".$tr['feature_url']."'><img alt='".$tr['feature_title']."' class='banner' src='/site/1/feature/".$tr['feature_image']."' /></a></li>\n";
+  }
+  $temp = mysql_query("select feature_image, feature_title, feature_url from feature where feature_status = 'active' and feature_zone = 1 and feature_activate_date <= '".date("Y-m-d")."' and feature_expire_date = '0000-00-00'");
+  While($tr = mysql_fetch_assoc($temp)) {
+    echo "<li><a href='".$tr['feature_url']."'><img alt='".$tr['feature_title']."' class='banner' src='/site/1/feature/".$tr['feature_image']."' /></a></li>\n";
+  }
+} else {
+?>
 	<li><a href="/article/67"><img alt="Our Miracle" class="banner" src="/site/1/template/images/temp/Church.jpg" /></a></li>
 	<li><a href="/article/3"><img alt="Ministries" class="banner" src="/site/1/template/images/temp/Children.jpg" /></a></li>
-	<li><a href="/article/120"><img alt="Missions" class="banner" src="/site/1/template/images/temp/Missions.jpg" /></a></li>
+<?php
+}
+?>
 </ul>
 </div>
 <?php if (array_key_exists(Date("n-j-Y"), $no_live_stream)) { ?>
