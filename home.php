@@ -68,7 +68,7 @@
         else {
       ?>
 <div id="superGraphic" style="height:initial; padding-top:0.5em; width:99%;">
-<ul class="bxslider">
+<ul class="bxslider" style="margin:0">
 	<li><a href="/article/102"><img alt="Welcome" class="banner" src="/site/1/template/images/temp/Pastor.jpg" /></a></li>
 	<li><a href="https://www.groupvbspro.com/vbs/ez/SpringMeadows"><img alt="Vacation Bible School" class="banner" src="/site/1/template/images/temp/VBS.jpg" /></a></li>
 	<li><a href="/article/67"><img alt="Our Miracle" class="banner" src="/site/1/template/images/temp/Church.jpg" /></a></li>
@@ -110,15 +110,35 @@ If (mysql_ping()) {
   while (($tr = mysql_fetch_assoc($temp)) != false) {
     $podcast[] = $tr;
   }
+            $temp = mysql_query("select title, page_id from article where title like 'Bulletin %'");
+            While($tr = mysql_fetch_assoc($temp)) {
+              preg_match('/([0-9]{1,4})[_\\.\/-]([0-9]{1,2})[_\\.\/-]([0-9]{1,4})/i', $tr["title"], $matches);
+              If (isset($matches[1])) {
+                If (strlen($matches[1]) == 4) {
+                  $bulletin_db[$matches[1]."-".($matches[2] - 0)."-".($matches[3] - 0)] = "/article/".$tr["page_id"];
+                }
+                If (strlen($matches[3]) == 4) {
+                  $bulletin_db[$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = "/article/".$tr["page_id"];
+                }
+                If (strlen($matches[3]) != 4 && strlen($matches[1]) != 4) {
+                  $bulletin_db["20".$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = "/article/".$tr["page_id"];
+                }
+              }
+            }
+            if (isset($bulletin_db[date("Y-n-j", strtotime($podcast[0]["file_date"]))])) {
+              $temp = "<a href='".$bulletin_db[date("Y-n-j", strtotime($podcast[0]["file_date"]))]."' target = '_blank'>Bulletin</a>";
+            } else {
+              $temp = "";
+            }
 }
 if (count($podcast) > 0) {
- Echo "<a class='control_audio' href='".trim($podcast[0]["link"])."' >\n    <audio preload>\n      <source src='".trim($podcast[0]["link"])."' type='audio/mpeg' />\n    </audio>\n      <object id='flash_obj' class='playerpreview' type='application/x-shockwave-flash' data='/site/1/template/script/player_mp3_js.swf' width='0' height='0'>\n        <param name='movie' value='/site/1/template/script/player_mp3_js.swf' />\n        <param name='AllowScriptAccess' value='always' />\n        <param name='FlashVars' value='mp3=".trim($podcast[0]["link"])."' />\n      </object>\n      <img class='floatLeft third_thumbnail' src='/site/1/template/images/Play_Button.png' alt='Play Button' /></a><span class='sermon_title'><a href='".trim($podcast[0]["link"])."' >".$podcast[0]["title"]."</a></span><p class='tighter_text'>".$podcast[0]["speaker"]."</p>";
+ Echo "<a class='control_audio' href='".trim($podcast[0]["link"])."' >\n    <audio preload>\n      <source src='".trim($podcast[0]["link"])."' type='audio/mpeg' />\n    </audio>\n      <object id='flash_obj' class='playerpreview' type='application/x-shockwave-flash' data='/site/1/template/script/player_mp3_js.swf' width='0' height='0'>\n        <param name='movie' value='/site/1/template/script/player_mp3_js.swf' />\n        <param name='AllowScriptAccess' value='always' />\n        <param name='FlashVars' value='mp3=".trim($podcast[0]["link"])."' />\n      </object>\n      <img class='floatLeft third_thumbnail' src='/site/1/template/images/Play_Button.png' alt='Play Button' /></a><span class='sermon_title'><a href='".trim($podcast[0]["link"])."' >".str_replace("\\", "", $podcast[0]["title"])."</a></span><p class='tighter_text'>".str_replace("\\", "", $podcast[0]["speaker"])."<br /><br />".$temp."</p>";
 }
 If (false) {
 ?>
 
 <audio preload=""><source src="" type="audio/mpeg" /></audio>
-<object class="playerpreview" data="/site/1/template/script/player_mp3_js.swf" height="0" id="flash_obj" type="application/x-shockwave-flash" width="0"><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><source src="" type="audio/mpeg" /><param name="movie" value="/site/1/template/script/player_mp3_js.swf" />\n<param name="AllowScriptAccess" value="always" />\n<param name="FlashVars" value="mp3=" /></object><img alt="Play Button" class="floatLeft third_thumbnail" src="/site/1/template/images/Play_Button.png" /> <span class="sermon_title"><a href="">Auto-generated Sermon Title</a></span>
+<object class="playerpreview" data="/site/1/template/script/player_mp3_js.swf" height="0" id="flash_obj" type="application/x-shockwave-flash" width="0"><source src="" type="audio/mpeg" /><param name="movie" value="/site/1/template/script/player_mp3_js.swf" />\n<param name="AllowScriptAccess" value="always" />\n<param name="FlashVars" value="mp3=" /></object><img alt="Play Button" class="floatLeft third_thumbnail" src="/site/1/template/images/Play_Button.png" /> <span class="sermon_title"><a href="">Auto-generated Sermon Title</a></span>
 
 <p class="tighter_text">Auto-generated Speaker Name</p>
 <?php } ?></div>
