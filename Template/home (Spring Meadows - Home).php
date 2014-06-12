@@ -5,8 +5,8 @@ Header ("Location: http://www.springmeadows.org".$_SERVER["REQUEST_URI"]);
 exit;
 }
 //Calculate time till next live stream
-$next_sat = strtotime('next saturday 10:30');
-$this_sat = strtotime('this saturday 10:30');
+$next_sat = strtotime('next saturday 10:25');
+$this_sat = strtotime('this saturday 10:25');
 if (time() < $this_sat) {
   $reload = $this_sat - time() + 30;
 }
@@ -69,6 +69,7 @@ else {
   <div class="headerWrapper lightfullBoxShadow">
     <div id="headerArea">
       <?php
+  $serviceURL = "https://new.livestream.com/springmeadows/events/3075492";
   $temp = mysql_query("select * from calendar_details where active = 1 and CategoryID = 13 and DisplayStart <= '".date("Y-m-d")."' and DisplayStop >= '".date("Y-m-d")."' and StartTime <= '".date("H:i:s")."' and StopTime >= '".date("H:i:s")."'");
   While($tr = mysql_fetch_assoc($temp)) {
         $DB_Data[] = $tr;
@@ -79,60 +80,25 @@ else {
 //                                 '9-29-2012' => "We apologize but we are currently having technical problems with today's live stream.",
                                  '10-13-2012' => "We apologize but today's live stream is not available due to technical problems.",
 //                                 '10-27-2012' => "We apologize but today's live stream is currently having technical problems.",
+//                                 '4-19-2014' => "We apologize but we are currently having technical problems with today's live stream.",
 
                                );
         date_default_timezone_set("America/New_York");
-        if((Date("NHi") >= 61030 && Date("NHi") <= 61300 && !array_key_exists(Date("n-j-Y"), $no_live_stream)) || $_GET['livetest'] == "golive" || isset($DB_Data[0])) {
-          If (mysql_ping()) {
-            $temp = mysql_query("select title, page_id from article where title like 'Bulletin %'");
-            While($tr = mysql_fetch_assoc($temp)) {
-              preg_match('/([0-9]{1,4})[_./-]([0-9]{1,2})[_./-]([0-9]{1,4})/i', $tr["title"], $matches);
-              If (isset($matches[1])) {
-                If (strlen($matches[1]) == 4) {
-                  $bulletin_db[$matches[1]."-".($matches[2] - 0)."-".($matches[3] - 0)] = "/article/".$tr["page_id"];
-                }
-                If (strlen($matches[3]) == 4) {
-                  $bulletin_db[$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = "/article/".$tr["page_id"];
-                }
-                If (strlen($matches[3]) != 4 && strlen($matches[1]) != 4) {
-                  $bulletin_db["20".$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = "/article/".$tr["page_id"];
-                }
-              }
-            }
-            $temp = mysql_query("select title, speaker, file_date, link from podcast where file_date = '".date("Y-m-d")."' and zone = 1 Order by status desc");
-            $tr = mysql_fetch_assoc($temp);
-          }
-          if (isset($DB_Data[0])) {
-            $tr["title"] = $DB_Data[0]["Title"];
-            $tr["speaker"] = $DB_Data[0]["ContactName"];
-          }
-          echo '      <img src="/site/1/template/images/logo_two_lines_front.png" alt="'.$_SESSION[$su]['siteinfo']['name'].'" />';
+        if((Date("NHi") >= 61025 && Date("NHi") <= 61030 && !array_key_exists(Date("n-j-Y"), $no_live_stream)) || $_GET['livetest'] == "golive") {
           echo '<h3>Live Stream of Service</h3>';
-            If (isset($tr["title"])) {
-              Echo "<h4>".$tr["title"].(isset($tr["speaker"]) && trim($tr["speaker"]) != ""?" (".$tr["speaker"].")":"")."</h4>";
-            }
-            if (isset($bulletin_db[date("Y-n-j")])) {
-            Echo "<p><a href='".$bulletin_db[date("Y-n-j")]."' target = '_blank'>Bulletin</a></p>";
-            }
-          echo '<iframe id="liveStream" src="http://stream.adventistuniversity.edu/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
-//          echo '<iframe id="liveStream" src="http://www.youtube.com/embed/yTpD7JEwTsA" frameborder="0" allowfullscreen></iframe>';
-//          echo '<iframe id="liveStream" src="http://streaming.priserv.com/SmoothStreamingPlayer.html" >&nbsp;  </iframe>';
+//          $tmp = strtotime('this saturday 10:30');
+          $tmp = strtotime('this thursday 12:20');
+          $tmp = $tmp - time() + 15;
+          $tmp = ($tmp < 5*60 + 15?$tmp:5*60 + 15);
+          echo '<iframe id="liveStream" src="http://www.youtube.com/embed/A-KIbuFDcMw?autoplay=1&start='.((5*60 + 15) - $tmp).'" frameborder="0" allowfullscreen></iframe>';
           echo "<script>";
-          echo "  _gaq.push(function() {";
-          echo "  var pageTracker = _gat.b._getTrackerByName();";
-          echo "  var iframe = document.getElementById('liveStream');";
-          echo "  iframe.src = b.pageTracker._getLinkerUrl('https://mars.adu.edu/SpringMeadowsSDA.html');
-});";
+          echo '  setTimeout( "window.location = '."'".$serviceURL."'".'", '.$tmp.'*1000 );';
           echo "</script>";
-          if (!isset($_GET['chattest']) || $_GET['chattest'] != "chat") {
-//echo "<div style='display:none'>";
-          }
-?>
-            <script id="sid0010000016015796269">(function() {function async_load(){s.id="cid0010000016015796269";s.src='http://st.chatango.com/js/gz/emb.js';s.style.cssText="width:350px;height:520px;";s.async=true;s.text='{"handle":"springmeadowschurch","styles":{"b":100,"f":50,"l":"999999","q":"999999","r":100,"s":1,"t":0,"w":0}}';var ss = document.getElementsByTagName('script');for (var i=0, l=ss.length; i < l; i++){if (ss[i].id=='sid0010000016015796269'){ss[i].id +='_';ss[i].parentNode.insertBefore(s, ss[i]);break;}}}var s=document.createElement('script');if (s.async==undefined){if (window.addEventListener) {addEventListener('load',async_load,false);}else if (window.attachEvent) {attachEvent('onload',async_load);}}else {async_load();}})();</script>
-<?php
-          if (!isset($_GET['chattest']) || $_GET['chattest'] != "chat") {
-//echo "</div>";
-          }
+        }
+        else if((Date("NHi") >= 61030 && Date("NHi") <= 61300 && !array_key_exists(Date("n-j-Y"), $no_live_stream)) || $_GET['livetest'] == "golivenow" || isset($DB_Data[0])) {
+          echo "<script>";
+          echo "  window.location = '".$serviceURL."';";
+          echo "</script>";
         }
         else {
       ?>
