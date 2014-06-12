@@ -1,3 +1,12 @@
+<?php
+if (FALSE) {
+?>
+<h1>Please do not Edit</h1>
+<!--
+<?php
+}
+else {
+?>
 <style type="text/css">.banner {
     width:100%;
   }
@@ -68,8 +77,7 @@
         else {
       ?>
 <div id="superGraphic" style="height:initial; padding-top:0.5em; width:99%;">
-<ul class="bxslider" style="margin:0">
-<?php
+<ul class="bxslider" style="margin:0"><?php
 If (mysql_ping()) {
   $temp = mysql_query("select feature_image, feature_title, feature_url from feature where feature_status = 'active' and feature_zone = 1 and feature_activate_date <= '".date("Y-m-d")."' and feature_expire_date >= '".date("Y-m-d")."'");
   While($tr = mysql_fetch_assoc($temp)) {
@@ -83,7 +91,7 @@ If (mysql_ping()) {
 ?>
 	<li><a href="/article/67"><img alt="Our Miracle" class="banner" src="/site/1/template/images/temp/Church.jpg" /></a></li>
 	<li><a href="/article/3"><img alt="Ministries" class="banner" src="/site/1/template/images/temp/Children.jpg" /></a></li>
-<?php
+	<?php
 }
 ?>
 </ul>
@@ -159,3 +167,10 @@ If (false) {
 <p><a href="/calendar.php?view=month"><img src="/site/1/template/images/upcoming_events_new.jpg" /></a></p>
 ##calendarlist##</div>
 </div>
+<?php
+}
+if (FALSE) {
+?>
+--><?php
+}
+?>
