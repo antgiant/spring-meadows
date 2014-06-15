@@ -16,8 +16,8 @@ else {
    date_default_timezone_set("America/New_York");
   $temp = mysql_query("select *, TIMESTAMPDIFF(SECOND, STR_TO_DATE('".date("Y-m-d H:i:s")."','%Y-%m-%d %H:%i:%S'), STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S')) as SecondsTillLive from calendar_details where active = 1 and CategoryID = 13 and STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S') <= STR_TO_DATE('".date("Y-m-d H:i:s", time() - (5*60 + 15))."','%Y-%m-%d %H:%i:%S') and STR_TO_DATE(CONCAT(DisplayStop, ' ', StopTime),'%Y-%m-%d %H:%i:%S') >= STR_TO_DATE('".date("Y-m-d H:i:s")."','%Y-%m-%d %H:%i:%S') order by DisplayStart asc, StartTime asc limit 1");
   $DB_Data = mysql_fetch_assoc($temp);
-        if($_GET['livetest'] == "golive" || isset($DB_Data)) {
-          if ($_GET['livetest'] == "golive" && !isset($DB_Data)) {
+        if($_GET['livetest'] == "golive" || isset($DB_Data["ContactWeb"])) {
+          if ($_GET['livetest'] == "golive" && !isset($DB_Data["ContactWeb"])) {
             $DB_Data = $next_event;
             $DB_Data["SecondsTillLive"] = "30";
           }
@@ -58,13 +58,7 @@ If (mysql_ping()) {
 ?>
 </ul>
 </div>
-<?php if (array_key_exists(Date("n-j-Y"), $no_live_stream)) { ?>
-
-<div>
-<p><?php echo $no_live_stream[Date("n-j-Y")]; ?></p>
-</div>
-<?php } ?><?php } ?>
-
+<?php } ?>
 <div style="text-align: center;">
 <div class="third" style="margin-right: 0px; border-right-width: 0px;">
 <p id="directions"><?php 
