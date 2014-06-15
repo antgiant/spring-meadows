@@ -51,7 +51,7 @@ exit;
     <div id="headerArea" style="background-image:none;">
      <a href="/" title="Front Page"><img alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" class="articleTop floatLeft" src="/site/1/template/images/logo_two_lines_new.png" /></a>
 
-     <nav class="topMenu serif italics articleTop" >##menu-horizontal##</nav>
+     <nav class="topMenu serif italics articleTop" style="margin-bottom:0; margin-top:0">##menu-horizontal##</nav>
     </div>
   </div>
   <section>
@@ -93,7 +93,6 @@ exit;
       <script src="/site/1/template/script/sylvester.js"></script>
       <script src="/site/1/template/script/pb.transformie.min.js"></script>
     <! bob [endif]-->
-
     <script type="text/javascript">
       //Run Slideshow
       $(document).ready(function(){
