@@ -4,15 +4,10 @@ Header("HTTP/1.1 301 Moved Permanently");
 Header ("Location: http://www.springmeadows.org".$_SERVER["REQUEST_URI"]);
 exit;
 }
-//Calculate time till next live stream
-$next_sat = strtotime('next saturday 10:30');
-$this_sat = strtotime('this saturday 10:30');
-if (time() < $this_sat) {
-  $reload = $this_sat - time() + 30;
-}
-else {
-  $reload = $next_sat - time() + 30;
-}
+//Determine time till next live stream
+  $next = mysql_query("select TIMESTAMPDIFF(SECOND, STR_TO_DATE('".date("Y-m-d H:i:s", time() + (5*60 + 15))."','%Y-%m-%d %H:%i:%S'), STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S')) as SecondsTillLive from calendar_details where active = 1 and CategoryID = 13 and STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S') >= STR_TO_DATE('".date("Y-m-d H:i:s")."','%Y-%m-%d %H:%i:%S') order by DisplayStart desc, StartTime desc  limit 1");
+  $tr = mysql_fetch_assoc($temp);
+  $reload = $tr["SecondsTillLive "];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +51,7 @@ else {
     <div id="headerArea" style="background-image:none;">
      <a href="/" title="Front Page"><img alt="<? print $_SESSION[$su]['siteinfo']['name']; ?>" class="articleTop floatLeft" src="/site/1/template/images/logo_two_lines_new.png" /></a>
 
-     <nav class="topMenu serif italics articleTop" style="margin-bottom:0; margin-top:0">##menu-horizontal##</nav>
+     <nav class="topMenu serif italics articleTop" >##menu-horizontal##</nav>
     </div>
   </div>
   <section>
