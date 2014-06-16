@@ -5,7 +5,7 @@ Header ("Location: http://www.springmeadows.org".$_SERVER["REQUEST_URI"]);
 exit;
 }
 //Determine time till next live stream
-  $next = mysql_query("select *, TIMESTAMPDIFF(SECOND, STR_TO_DATE('".date("Y-m-d H:i:s", time() + (5*60 + 15))."','%Y-%m-%d %H:%i:%S'), STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S')) as SecondsTillLive from calendar_details where active = 1 and CategoryID = 13 and STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S') >= STR_TO_DATE('".date("Y-m-d H:i:s")."','%Y-%m-%d %H:%i:%S') order by DisplayStart desc, StartTime desc  limit 1");
+  $next = mysql_query("select *, TIMESTAMPDIFF(SECOND, STR_TO_DATE('".date("Y-m-d H:i:s", time() + (5*60 + 15))."','%Y-%m-%d %H:%i:%S'), STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S')) as SecondsTillLive from calendar_details where active = 1 and CategoryID = 13 and STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S') >= STR_TO_DATE('".date("Y-m-d H:i:s")."','%Y-%m-%d %H:%i:%S') order by DisplayStart asc, StartTime asc  limit 1");
   $next_event = mysql_fetch_assoc($temp);
   $reload = ($next_event["SecondsTillLive"] > 0?$next_event["SecondsTillLive"]:"100000000");
 ?>

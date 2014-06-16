@@ -18,7 +18,8 @@ else {
   $DB_Data = mysql_fetch_assoc($temp);
         if($_GET['livetest'] == "golive" || isset($DB_Data["ContactWeb"])) {
           if ($_GET['livetest'] == "golive" && !isset($DB_Data["ContactWeb"])) {
-            $DB_Data = $next_event;
+            $next = mysql_query("select *, TIMESTAMPDIFF(SECOND, STR_TO_DATE('".date("Y-m-d H:i:s", time() + (5*60 + 15))."','%Y-%m-%d %H:%i:%S'), STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S')) as SecondsTillLive from calendar_details where active = 1 and CategoryID = 13 and STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S') >= STR_TO_DATE('".date("Y-m-d H:i:s")."','%Y-%m-%d %H:%i:%S') order by DisplayStart asc, StartTime asc  limit 1");
+            $DB_Data = mysql_fetch_assoc($next);
             $DB_Data["SecondsTillLive"] = "30";
           }
           $serviceURL = $DB_Data["ContactWeb"];
