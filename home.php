@@ -103,6 +103,12 @@ If (mysql_ping()) {
             } else {
               $temp = "";
             }
+            $tmp = mysql_query("select ContactWeb from calendar_details where active = 1 and CategoryID = 13 and DisplayStart = '".substr($podcast[0]["file_date"], 0, 10)."' order by DisplayStart asc, StartTime asc limit 1");
+            $tmp = mysql_fetch_assoc($tmp);
+            if (isset($tmp["ContactWeb"]) && $tmp["ContactWeb"] != "") {
+              $temp .= "<br>\n<br>\n<iframe style='width: 100%; min-height: 200px;' src='".str_ireplace("/springmeadows/", "/accounts/8636662/", $tmp["ContactWeb"])."/player'></iframe>";
+            }
+
 }
 if (count($podcast) > 0) {
  Echo "<a class='control_audio' href='".trim($podcast[0]["link"])."' >\n    <audio preload>\n      <source src='".trim($podcast[0]["link"])."' type='audio/mpeg' />\n    </audio>\n      <object id='flash_obj' class='playerpreview' type='application/x-shockwave-flash' data='/site/1/template/script/player_mp3_js.swf' width='0' height='0'>\n        <param name='movie' value='/site/1/template/script/player_mp3_js.swf' />\n        <param name='AllowScriptAccess' value='always' />\n        <param name='FlashVars' value='mp3=".trim($podcast[0]["link"])."' />\n      </object>\n      <img class='floatLeft third_thumbnail' src='/site/1/template/images/Play_Button.png' alt='Play Button' /></a><span class='sermon_title'><a href='".trim($podcast[0]["link"])."' >".str_replace("\\", "", $podcast[0]["title"])."</a></span><p class='tighter_text'>".str_replace("\\", "", $podcast[0]["speaker"])."<br /><br />".$temp."</p>";
