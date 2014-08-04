@@ -26,7 +26,7 @@ else {
           echo '<h3>Live Stream of Service</h3>';
           if ($DB_Data["SecondsTillLive"] > 0) {
             $tmp = ($DB_Data["SecondsTillLive"] < 5*60 + 15?$DB_Data["SecondsTillLive"]:5*60 + 15);
-            echo '<iframe id="liveStream" src="http://www.youtube.com/embed/A-KIbuFDcMw?autoplay=1&start='.((5*60 + 15) - $tmp).'" frameborder="0" allowfullscreen></iframe>';
+            echo '<div class="youtube-container"><iframe id="liveStream" src="http://www.youtube.com/embed/A-KIbuFDcMw?autoplay=1&start='.((5*60 + 15) - $tmp).'" frameborder="0" allowfullscreen></iframe></div>';
             echo "<script>";
             echo '  setTimeout( "window.location = '."'".$serviceURL."'".'", '.$tmp.'*1000 );';
             echo "</script>";
