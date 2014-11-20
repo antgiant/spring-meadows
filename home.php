@@ -30,9 +30,9 @@ else {
       ?>
 <?php
 If (mysql_ping()) {
-  $temp = mysql_query("select feature_image, feature_title, feature_url from feature where feature_status = 'active' and feature_zone = 1 and feature_activate_date <= '".date("Y-m-d")."' and (feature_expire_date >= '".date("Y-m-d")."' or feature_expire_date = '0000-00-00') order by feature_activate_date desc, feature_expire_date");
+  $temp = mysql_query("select feature_image, feature_title, feature_url from feature where feature_status = 'active' and feature_zone = 1 and feature_activate_date <= '".date("Y-m-d")."' and (feature_expire_date >= '".date("Y-m-d")."' or feature_expire_date = '0000-00-00') order by feature_activate_date desc, RAND()");
   While($tr = mysql_fetch_assoc($temp)) {
-    echo "<li><a href='".$tr['feature_url']."'><img alt='".$tr['feature_title']."' class='banner' src='/site/1/feature/".$tr['feature_image']."' /></a></li>\n";
+    echo "<li><a href='".$tr['feature_url']."'><img alt='".$tr['feature_title']."' class='banner' src='".$tr['feature_image']."' /></a></li>\n";
   }
 } else {
 ?>
