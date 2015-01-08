@@ -49,7 +49,7 @@
       }
     }
   }
-  $temp = mysql_query("select title, speaker, file_date, link, status from podcast where zone = 1 order by file_date desc");
+  $temp = mysql_query("select title, speaker, file_date, link, status from podcast where zone = 1 and status = 'active' order by file_date desc");
   While($tr = mysql_fetch_assoc($temp)) {
       $podcast[date("Y-n-j", strtotime($tr["file_date"]))] = $tr;
       if (date("Y", strtotime($tr["file_date"])) > 2000) {
@@ -73,7 +73,7 @@
           $firstOfMonth = mktime(0, 0, 0, $i, 1, $year);
           Print "    <h2>".Date("M", $firstOfMonth).".</h2>";
           $oldDay = 0;
-          Print "    <ul style='list-style-type: none;'>";
+          Print "    <ol>";
           For ($j = 0; $j < 5; $j++) {
             $tmp = Abs(date("w", $firstOfMonth) - 6);
             $day = date("j", Mktime(0, 0, 0, $i, (1 + $tmp + (7*$j)), $year));
@@ -102,7 +102,7 @@
               $link = "site/1/podcast/".$dfiles[$year.'-'.$i."-".$day];
             }
             if ($day != "" && $title != "") {
-              print "    <li>\n";
+              print "    <li value='".$day."'>\n";
               if (FALSE && $link != "") {
                 print "<a class='control_audio' href='".$link."' >\n";
                 print "  <audio preload>\n";
@@ -116,21 +116,20 @@
                 print "  <img src='/site/1/template/images/Play_Button.png' alt='Play Button' />\n";
                 print "</a>\n";
               }
-              print (strlen($day) == 1?"0":"").$day." &nbsp;&nbsp;";
               print ($link == ""?"":"<a href='".$link."'>");
               print $title;
               print ($link == ""?"":"</a>");
               print ($preacher == ""?"":" - ".$preacher);
+              if (isset($bulletin_db[$year.'-'.$i."-".$day])) {
+                Print " &nbsp;&nbsp;<a href = '".$bulletin_db[$year.'-'.$i."-".$day]."'>Bulletin</a>";
+              }
+              else if (isset($bufiles[$year.'-'.$i."-".$day])) {
+                Print " &nbsp;&nbsp;<a href = 'site/1/docs/".$bufiles[$year.'-'.$i."-".$day]."'>Bulletin</a>";
+              }
+              Print "\n    </li>\n";
             }
-            if (isset($bulletin_db[$year.'-'.$i."-".$day])) {
-              Print " &nbsp;&nbsp;<a href = '".$bulletin_db[$year.'-'.$i."-".$day]."'>Bulletin</a>";
-            }
-            else if (isset($bufiles[$year.'-'.$i."-".$day])) {
-              Print " &nbsp;&nbsp;<a href = 'site/1/docs/".$bufiles[$year.'-'.$i."-".$day]."'>Bulletin</a>";
-            }
-            Print "\n    </li>\n";
           }
-          Print "    </ul>";
+          Print "    </ol>";
         }
       }
     }
