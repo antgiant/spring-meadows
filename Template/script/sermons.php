@@ -74,6 +74,7 @@
           Print "    <h2>".Date("M", $firstOfMonth).".</h2>";
           $oldDay = 0;
           Print "    <ol>";
+          $actualOutput = "";
           For ($j = 0; $j < 5; $j++) {
             $tmp = Abs(date("w", $firstOfMonth) - 6);
             $day = date("j", Mktime(0, 0, 0, $i, (1 + $tmp + (7*$j)), $year));
@@ -102,33 +103,35 @@
               $link = "site/1/podcast/".$dfiles[$year.'-'.$i."-".$day];
             }
             if ($day != "" && $title != "") {
-              print "    <li value='".$day."'>\n";
+              $output .= "    <li value='".$day."'>\n";
               if (FALSE && $link != "") {
-                print "<a class='control_audio' href='".$link."' >\n";
-                print "  <audio preload>\n";
-                print "    <source src='".$link."' type='audio/mpeg' />\n";
-                print "  </audio>\n";
-                print "  <object id='flash_obj' class='playerpreview' type='application/x-shockwave-flash' data='/site/1/template/script/player_mp3_js.swf' width='0' height='0'>\n";
-                print "    <param name='movie' value='/site/1/template/script/player_mp3_js.swf' />\n";
-                print "    <param name='AllowScriptAccess' value='always' />\n";
-                print "    <param name='FlashVars' value='mp3=".$link."' />\n";
-                print "  </object>\n";
-                print "  <img src='/site/1/template/images/Play_Button.png' alt='Play Button' />\n";
-                print "</a>\n";
+                $output .= "<a class='control_audio' href='".$link."' >\n";
+                $output .= "  <audio preload>\n";
+                $output .= "    <source src='".$link."' type='audio/mpeg' />\n";
+                $output .= "  </audio>\n";
+                $output .= "  <object id='flash_obj' class='playerpreview' type='application/x-shockwave-flash' data='/site/1/template/script/player_mp3_js.swf' width='0' height='0'>\n";
+                $output .= "    <param name='movie' value='/site/1/template/script/player_mp3_js.swf' />\n";
+                $output .= "    <param name='AllowScriptAccess' value='always' />\n";
+                $output .= "    <param name='FlashVars' value='mp3=".$link."' />\n";
+                $output .= "  </object>\n";
+                $output .= "  <img src='/site/1/template/images/Play_Button.png' alt='Play Button' />\n";
+                $output .= "</a>\n";
               }
-              print ($link == ""?"":"<a href='".$link."'>");
-              print $title;
-              print ($link == ""?"":"</a>");
-              print ($preacher == ""?"":" - ".$preacher);
+              $output .= ($link == ""?"":"<a href='".$link."'>");
+              $output .= $title;
+              $output .= ($link == ""?"":"</a>");
+              $output .= ($preacher == ""?"":" - ".$preacher);
               if (isset($bulletin_db[$year.'-'.$i."-".$day])) {
-                Print " &nbsp;&nbsp;<a href = '".$bulletin_db[$year.'-'.$i."-".$day]."'>Bulletin</a>";
+                $output .= " &nbsp;&nbsp;<a href = '".$bulletin_db[$year.'-'.$i."-".$day]."'>Bulletin</a>";
               }
               else if (isset($bufiles[$year.'-'.$i."-".$day])) {
-                Print " &nbsp;&nbsp;<a href = 'site/1/docs/".$bufiles[$year.'-'.$i."-".$day]."'>Bulletin</a>";
+                $output .= " &nbsp;&nbsp;<a href = 'site/1/docs/".$bufiles[$year.'-'.$i."-".$day]."'>Bulletin</a>";
               }
-              Print "\n    </li>\n";
+              $output .= "\n    </li>\n";
             }
+            $actualOutput = $output.$actualOutput;
           }
+          Print $actualOutput;
           Print "    </ol>";
         }
       }
