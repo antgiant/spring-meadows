@@ -14,7 +14,7 @@ exit;
 <head>
 <meta charset=utf-8>
 <meta name = "viewport" content = "initial-scale = 1.0">
-<meta name="google-site-verification" content="0NKzJjrbdhMjBsKwO2TecxYzHQe8KK46rckvYfn7F0M" />
+<meta name="google-site-verification" content="50HQ9ccEf3FNx834rNBAJP4q23TM_ObVNPvyTAvPQGc" />
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for springmeadows.org" href="/rss.php?zone=default" />
 <title><?php echo $_SESSION["_"]["siteinfo"]["title"]." - ".$content["title"]; ?></title>
 <link rel="stylesheet" type="text/css" media="all" href="/site/1/template/css/theme.css" />
