@@ -150,6 +150,7 @@ exit;
         $("#directions").html('<form name="directions" action="http://maps.google.com/maps" method="get"><label for="saddr">&nbsp;Starting Address</label><br /><input type="text" name="saddr" /><input type="hidden" name="daddr" value="5783 N Ronald Reagan Blvd. Sanford, FL 32773" /><input type="submit" value="Go" class="directionsSubmit"/></form>');
         document.directions.saddr.focus();
         navigator.geolocation.getCurrentPosition(gotDirections, noDirections, {enableHighAccuracy:true, maximumAge:30000, timeout:300000});
+        $('#directions').removeAttr('directions');
         return false;
       });
 <?php } ?>
