@@ -90,11 +90,12 @@ If (mysql_ping()) {
             } else {
               $temp = "";
             }
-            $tmp = mysql_query("select ContactWeb from calendar_details where active = 1 and CategoryID = 13 and DisplayStart = '".substr($podcast[0]["file_date"], 0, 10)."' order by DisplayStart asc, StartTime asc limit 1");
-            $tmp = mysql_fetch_assoc($tmp);
-            if (isset($tmp["ContactWeb"]) && $tmp["ContactWeb"] != "") {
-              $temp .= "<br>\n<br>\n<iframe style='width: 100%; min-height: 200px;' src='".str_ireplace("/springmeadows/", "/accounts/8636662/", $tmp["ContactWeb"])."/player'></iframe>";
-            }
+//            $tmp = mysql_query("select ContactWeb from calendar_details where active = 1 and CategoryID = 13 and DisplayStart = '".substr($podcast[0]["file_date"], 0, 10)."' order by DisplayStart asc, StartTime asc limit 1");
+//            $tmp = mysql_fetch_assoc($tmp);
+//            if (isset($tmp["ContactWeb"]) && $tmp["ContactWeb"] != "") {
+//              $temp .= "<br>\n<br>\n<iframe style='width: 100%; min-height: 200px;' src='".str_ireplace("/springmeadows/", "/accounts/8636662/", $tmp["ContactWeb"])."/player'></iframe>";
+//            }
+              $temp .= '<div class="video"><iframe src="https://www.youtube.com/embed/videoseries?list=PLCLGExcRRw5p6fW4KvFvGrQiUO7pcAJNT" frameborder="0" allowfullscreen height="315" width="560"></iframe></div><br style="clear: both;" />';
 
 }
 if (count($podcast) > 0) {
