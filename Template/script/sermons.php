@@ -2,23 +2,8 @@
   if(!isset($selected_year)) {
     $selected_year = date("Y");
   }
-  $bfiles = scandir("/home/wintersp/public_html/site/1/docs/");
-  $bufiles = array();
   $years = array();
-  Foreach ($bfiles as $file) {
-    preg_match('/bulletin.*?([0-9]{1,4})[_\\.\/-]([0-9]{1,2})[_\\.\/-]([0-9]{1,4})/i', $file, $matches);
-    If (isset($matches[1])) {
-      If (strlen($matches[1]) == 4) {
-        $bufiles[$matches[1]."-".($matches[2] - 0)."-".($matches[3] - 0)] = $file;
-      }
-      If (strlen($matches[3]) == 4) {
-        $bufiles[$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = $file;
-      }
-      If (strlen($matches[3]) != 4 && strlen($matches[1]) != 4) {
-        $bufiles["20".$matches[3]."-".($matches[1] - 0)."-".($matches[2] - 0)] = $file;
-      }
-    }
-  }
+
   $temp = mysql_query("select title, page_id from article where title like 'Bulletin %'");
   While($tr = mysql_fetch_assoc($temp)) {
     preg_match('/([0-9]{1,4})[_\\.\/-]([0-9]{1,2})[_\\.\/-]([0-9]{1,4})/i', $tr["title"], $matches);
@@ -89,9 +74,6 @@
               $output .= ($preacher == ""?"":" - ".$preacher);
               if (isset($bulletin_db[$year.'-'.$i."-".$day])) {
                 $output .= " &nbsp;&nbsp;<a href = '".$bulletin_db[$year.'-'.$i."-".$day]."'>Bulletin</a>";
-              }
-              else if (isset($bufiles[$year.'-'.$i."-".$day])) {
-                $output .= " &nbsp;&nbsp;<a href = 'site/1/docs/".$bufiles[$year.'-'.$i."-".$day]."'>Bulletin</a>";
               }
               $output .= "\n    </li>\n";
             }
