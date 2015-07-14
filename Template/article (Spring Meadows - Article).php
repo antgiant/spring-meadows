@@ -4,6 +4,7 @@ Header("HTTP/1.1 301 Moved Permanently");
 Header ("Location: http://www.springmeadows.org".$_SERVER["REQUEST_URI"]);
 exit;
 }
+$destination = '5783 N Ronald Reagan Blvd. Sanford, FL 32773';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +42,7 @@ exit;
 <?php
                     $ver = array();
                     $dir = '';
-                    $dest = urlencode('5783 N Ronald Reagan Blvd. Sanford, FL 32773');
+                    $dest = urlencode($destination);
                     preg_match("/.*CPU [^ ]*( ){0,1}OS ([0-9]+)_([0-9]+) like Mac OS.*/", $_SERVER['HTTP_USER_AGENT'], $ver);
                     //Check for IOS Version 6 or above
                     //If you are editing this be sure to edit the template as well.
@@ -129,7 +130,7 @@ exit;
 
       //Make Directions Clickable
       $("#directions").click(function() {
-        $("#directions").html('<form name="directions" action="http://maps.google.com/maps" method="get"><label for="saddr">&nbsp;Starting Address</label><br /><input type="text" name="saddr" /><input type="hidden" name="daddr" value="555 Markham Woods Road Longwood, FL 32779" /><input type="submit" value="Go" class="directionsSubmit"/></form>');
+        $("#directions").html('<form name="directions" action="http://maps.google.com/maps" method="get"><label for="saddr">&nbsp;Starting Address</label><br /><input type="text" name="saddr" /><input type="hidden" name="daddr" value="<?php echo $destination; ?>" /><input type="submit" value="Go" class="directionsSubmit"/></form>');
         document.directions.saddr.focus();
         navigator.geolocation.getCurrentPosition(gotDirections, noDirections, {enableHighAccuracy:true, maximumAge:30000, timeout:300000});
         return false;

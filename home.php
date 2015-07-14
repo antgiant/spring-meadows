@@ -1,4 +1,5 @@
 <?php
+$destination = '5783 N Ronald Reagan Blvd. Sanford, FL 32773';
 if (FALSE) {
 ?>
 <h1>Please do not Edit</h1>
@@ -48,7 +49,7 @@ If (mysql_ping()) {
 <p id="directions"><?php 
                     $ver = array();
                     $link = "";
-                    $dest = urlencode('5783 N Ronald Reagan Blvd. Sanford, FL 32773');
+                    $dest = urlencode($destination);
                     preg_match("/.*CPU [^ ]*( ){0,1}OS ([0-9]+)_([0-9]+) like Mac OS.*/", $_SERVER['HTTP_USER_AGENT'], $ver);
                     //Check for IOS Version 6 or above
                     //If you are editing this be sure to edit the template as well.
