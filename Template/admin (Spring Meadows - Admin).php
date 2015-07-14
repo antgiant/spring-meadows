@@ -1,5 +1,5 @@
 <?php 
-$destination = '5783 N Ronald Reagan Blvd. Sanford, FL 32773';
+require_once('/home/wintersp/public_html/site/1/template/script/directions.php'); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,19 +34,7 @@ $destination = '5783 N Ronald Reagan Blvd. Sanford, FL 32773';
         <div class="floatRight" style="padding-bottom: 1em; margin-left: 1em;">##search##</div>
         <div id="socialIcons" class="floatRight" style="padding-bottom: 1em; ">
             <span id="directions">
-<?php
-                    $ver = array();
-                    $dir = '';
-                    $dest = urlencode($destination);
-                    preg_match("/.*CPU [^ ]*( ){0,1}OS ([0-9]+)_([0-9]+) like Mac OS.*/", $_SERVER['HTTP_USER_AGENT'], $ver);
-                    //Check for IOS Version 6 or above
-                    //If you are editing this be sure to edit the template as well.
-                    $dir = 'http://maps.google.com/maps?saddr=&amp;daddr='.$dest;
-                    if(isset($ver[2]) && $ver[2] >= 6) {
-                        $dir = 'http://maps.apple.com/maps?daddr='.$dest;
-                    }
-                  ?>
-		<a href="<?php echo $dir; ?>"><img alt="Directions Icon" src="/site/1/template/images/social/directions.png" /></a></span>
+		<a href="<?php echo $map_click; ?>"><img alt="Directions Icon" src="/site/1/template/images/social/directions.png" /></a></span>
 		<a href="http://www.facebook.com/pages/Spring-Meadows-Seventh-day-Adventist-Church/252734141407822"><img alt="Facebook Icon" src="/site/1/template/images/social/facebook.png" /></a> <a href="http://twitter.com/meadows_sda"><img alt="Twitter Icon" src="/site/1/template/images/social/twitter.png" /></a> <a href="http://youtube.com/springmeadowssda"><img alt="Youtube Icon" src="/site/1/template/images/social/youtube.png" /></a> <a href="mailto:office@springmeadows.org"><img alt="Email Icon" src="/site/1/template/images/social/email.png" /></a></div>
 <!--    <a href="/"><img style="margin-top: -2em;" src="/site/1/template/images/Logo.png" alt="<? print ucwords($_SESSION[$su]['siteinfo']['name']); ?>"/></a>
 -->
@@ -124,7 +112,7 @@ $destination = '5783 N Ronald Reagan Blvd. Sanford, FL 32773';
 
       //Make Directions Clickable
       $("#directions").click(function() {
-        $("#directions").html('<form name="directions" action="http://maps.google.com/maps" method="get"><label for="saddr">&nbsp;Starting Address</label><br /><input type="text" name="saddr" /><input type="hidden" name="daddr" value="<?php echo $destination; ?>" /><input type="submit" value="Go" class="directionsSubmit"/></form>');
+        $("#directions").html('<form name="directions" action="<?php echo $map_form ?>" method="get"><label for="saddr">&nbsp;Starting Address</label><br /><input type="text" name="saddr" /><input type="hidden" name="daddr" value="<?php echo $destination; ?>" /><input type="submit" value="Go" class="directionsSubmit"/></form>');
         document.directions.saddr.focus();
         navigator.geolocation.getCurrentPosition(gotDirections, noDirections, {enableHighAccuracy:true, maximumAge:30000, timeout:300000});
         return false;

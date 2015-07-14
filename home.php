@@ -1,5 +1,5 @@
 <?php
-$destination = '5783 N Ronald Reagan Blvd. Sanford, FL 32773';
+require('/home/wintersp/public_html/site/1/template/script/directions.php'); 
 if (FALSE) {
 ?>
 <h1>Please do not Edit</h1>
@@ -46,21 +46,9 @@ If (mysql_ping()) {
 </div>
 <div style="text-align: center;">
 <div class="third" style="margin-right: 0px; border-right-width: 0px;">
-<p id="directions"><?php 
-                    $ver = array();
-                    $link = "";
-                    $dest = urlencode($destination);
-                    preg_match("/.*CPU [^ ]*( ){0,1}OS ([0-9]+)_([0-9]+) like Mac OS.*/", $_SERVER['HTTP_USER_AGENT'], $ver);
-                    //Check for IOS Version 6 or above
-                    //If you are editing this be sure to edit the template as well.
-                    if(isset($ver[2]) && $ver[2] >= 6) {
-                      $link =  'http://maps.apple.com/maps?daddr='.$dest;
-                    } 
-                    else {
-                      $link =  'http://maps.google.com/maps?saddr=&amp;daddr='.$dest;
-                    }
-                    Echo '			<a href="'.$link.'"><img src="/site/1/template/images/direction_button.png" /></a>';
-                  ?></p>
+<p id="directions">
+    <a href="<?php echo $map_click; ?>"><img src="/site/1/template/images/direction_button.png" /></a>
+</p>
 </div>
 
 <div class="third" style="margin-right: 0px; border-right-width: 0px;">

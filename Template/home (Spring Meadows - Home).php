@@ -4,6 +4,8 @@ Header("HTTP/1.1 301 Moved Permanently");
 Header ("Location: http://www.springmeadows.org".$_SERVER["REQUEST_URI"]);
 exit;
 }
+
+require_once('/home/wintersp/public_html/site/1/template/script/directions.php'); 
 //Determine time till next live stream
   $next = mysql_query("select *, TIMESTAMPDIFF(SECOND, STR_TO_DATE('".date("Y-m-d H:i:s", time())."','%Y-%m-%d %H:%i:%S'), STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S')) as SecondsTillLive from calendar_details where active = 1 and CategoryID = 13 and STR_TO_DATE(CONCAT(DisplayStart, ' ', StartTime),'%Y-%m-%d %H:%i:%S') >= STR_TO_DATE('".date("Y-m-d H:i:s")."','%Y-%m-%d %H:%i:%S') order by DisplayStart asc, StartTime asc  limit 1");
   $next_event = mysql_fetch_assoc($temp);
@@ -69,19 +71,7 @@ exit;
        <p style="float:left">5783 North Ronald Reagan Blvd. ♦ Sanford, FL, 32773 ♦ <a href="tel:4073271190">407-327-1190</a></p>
        <div class="floatRight" id="socialIcons">
             <span id="directions">
-<?php
-                    $ver = array();
-                    $dir = '';
-                    $dest = urlencode('5783 N Ronald Reagan Blvd. Sanford, FL 32773');
-                    preg_match("/.*CPU [^ ]*( ){0,1}OS ([0-9]+)_([0-9]+) like Mac OS.*/", $_SERVER['HTTP_USER_AGENT'], $ver);
-                    //Check for IOS Version 6 or above
-                    //If you are editing this be sure to edit the template as well.
-                    $dir = 'http://maps.google.com/maps?saddr=&amp;daddr='.$dest;
-                    if(isset($ver[2]) && $ver[2] >= 6) {
-                        $dir = 'http://maps.apple.com/maps?daddr='.$dest;
-                    }
-                  ?>
-		<a href="<?php echo $dir; ?>"><img alt="Directions Icon" src="/site/1/template/images/social/directions.png" /></a></span>
+		<a href="<?php echo $map_click; ?>"><img alt="Directions Icon" src="/site/1/template/images/social/directions.png" /></a></span>
 		<a href="http://www.facebook.com/pages/Spring-Meadows-Seventh-day-Adventist-Church/252734141407822"><img alt="Facebook Icon" src="/site/1/template/images/social/facebook.png" /></a> <a href="http://twitter.com/meadows_sda"><img alt="Twitter Icon" src="/site/1/template/images/social/twitter.png" /></a> <a href="http://youtube.com/springmeadowssda"><img alt="Youtube Icon" src="/site/1/template/images/social/youtube.png" /></a> <a href="mailto:office@springmeadows.org"><img alt="Email Icon" src="/site/1/template/images/social/email.png" /></a></div>
     <div class="floatLeft requiredFooter">
       ##adminlinks##
@@ -136,24 +126,14 @@ exit;
         return false;
       });
 
-<?php
-  $ver = array();
-  preg_match("/.*CPU [^ ]*( ){0,1}OS ([0-9]+)_([0-9]+) like Mac OS.*/", $_SERVER['HTTP_USER_AGENT'], $ver);
-  //Check for IOS Version 6 or above
-  if(isset($ver[2]) && $ver[2] >= 6) {
-    //Do Nothing
-  }
-  else {
-?>
       //Make Directions Clickable
       $("#directions").click(function() {
-        $("#directions").html('<form name="directions" action="http://maps.google.com/maps" method="get"><label for="saddr">&nbsp;Starting Address</label><br /><input type="text" name="saddr" /><input type="hidden" name="daddr" value="5783 N Ronald Reagan Blvd. Sanford, FL 32773" /><input type="submit" value="Go" class="directionsSubmit"/></form>');
+        $("#directions").html('<form name="directions" action="<?php echo $map_form ?>" method="get"><label for="saddr">&nbsp;Starting Address</label><br /><input type="text" name="saddr" /><input type="hidden" name="daddr" value="<?php echo $destination; ?>" /><input type="submit" value="Go" class="directionsSubmit"/></form>');
         document.directions.saddr.focus();
         navigator.geolocation.getCurrentPosition(gotDirections, noDirections, {enableHighAccuracy:true, maximumAge:30000, timeout:300000});
         $('#directions').removeAttr('directions');
         return false;
       });
-<?php } ?>
       function gotDirections(geo) {
         document.directions.saddr.value = geo.coords.latitude+", "+geo.coords.longitude;
 //        setTimeout("document.directions.submit()", 500);
