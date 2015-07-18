@@ -73,6 +73,7 @@ require_once('/home/wintersp/public_html/site/1/template/script/directions.php')
 
 <footer id="footerArea">
 <div class="footerWrapper centerWrapper">
+<p style="float:left">5783 North Ronald Reagan Blvd. ♦ Sanford, FL, 32773 ♦ <a href="tel:4073271190">407-327-1190</a></p>
 <div class="floatLeft requiredFooter">##adminlinks## ##footerlinks## <span class="footer">Developed by Spring Meadows Team</span></div>
 <script src="/site/1/template/script/accessifyhtml5.jquery.min.js"></script><script>AccessifyHTML5();</script><!-- bob[if lt IE 9]>
       <script src="/site/1/template/script/sylvester.js"></script>
